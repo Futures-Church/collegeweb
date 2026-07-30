@@ -138,7 +138,13 @@ p:last-child{margin-bottom:0}
   border-bottom-color:rgba(255,255,255,.12);padding-top:.6rem;padding-bottom:.6rem;
 }
 .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;flex:0 0 auto}
-.brand img{height:22px;width:auto}   /* horizontal lockup is ~10:1 */
+.brand img{height:22px;width:auto}
+/* The Alphacrucis lockup ships in navy for light backgrounds, which is
+   invisible on the violet hero. Reversing it to white is the standard
+   treatment: the mark is a single solid colour with the star knocked out
+   (verified — zero opaque white pixels), so the star stays open and the
+   background shows through it exactly as in an official reversed lockup. */
+.nav .brand img{height:26px;filter:brightness(0) invert(1)}
 .brand .wordmark{
   font-family:var(--font-body);font-weight:400;text-transform:uppercase;
   letter-spacing:.16em;font-size:.9rem;line-height:1;
@@ -149,7 +155,7 @@ p:last-child{margin-bottom:0}
 .nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--lemon);transition:width .35s var(--ease)}
 .nav-links a:hover{color:#fff}
 .nav-links a:hover::after{width:100%}
-@media(min-width:1000px){.nav-links{display:flex}.brand img{height:26px}}
+@media(min-width:1000px){.nav-links{display:flex}.nav .brand img{height:32px}}
 
 /* ===================== BUTTONS ===================== */
 .btn{
@@ -556,9 +562,9 @@ p:last-child{margin-bottom:0}
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
   <a class="brand" href="#top">
-    <img src="assets/unnamed.png" alt="Alphacrucis University College"
+    <img src="assets/alphacrucis-logo.png" alt="Alphacrucis University College"
          onerror="this.remove();document.getElementById('wm').hidden=false">
-    <span class="wordmark" id="wm" hidden>Futures<small>Church</small></span>
+    <span class="wordmark" id="wm" hidden>Alphacrucis<small>University College</small></span>
   </a>
   <nav class="nav-links">
     <a href="#moment">The moment</a>
@@ -631,7 +637,7 @@ p:last-child{margin-bottom:0}
         </div>
       </div>
       <figure class="shot shot--wide" data-rv data-d="4" style="margin-top:1rem">
-        <img src="assets/photos/college-44(2).jpg" alt="Student reading during studies"
+        <img src="assets/photos/moment.jpg" alt="A student reading in the college common room"
              width="1200" height="1800" loading="lazy" decoding="async">
       </figure>
     </div>

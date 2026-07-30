@@ -2,3 +2,6 @@
 *.log
 node_modules/
 .netlify/
+
+# full-res originals kept locally, optimised copies live in assets/photos/
+assets/College-*.jpg
