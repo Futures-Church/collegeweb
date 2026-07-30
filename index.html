@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diploma of Church Planting Leadership — Futures Church</title>
+<meta name="description" content="An accredited, practitioner-led pathway that seeds a pioneering culture across your whole church. One year. Eight subjects. Four pillars. Delivered by Alphacrucis University College.">
+<meta name="theme-color" content="#5d1fec">
+
+<meta property="og:title" content="Diploma of Church Planting Leadership">
+<meta property="og:description" content="The next planters are already in your church. This gives them a pathway.">
+<meta property="og:type" content="website">
+
+<style>
+/* ============================================================
+   FUTURES CHURCH — BRAND TYPEFACES
+   Primary / display : Rhymes Text (UltraLight + Light)
+   Co-display / body : Gal Gothic (Regular + Light)
+   Approved free fallbacks per Brand Guidelines V1.0:
+   Rhymes Text -> Times New Roman   |   Gal Gothic -> Arial
+   Drop the licensed files into assets/fonts/ to activate.
+   ============================================================ */
+@font-face{
+  font-family:'Rhymes Display';
+  src:local('Rhymes Display Light'),local('Rhymes Text Light'),
+      url('assets/fonts/Rhymes Display Light.ttf') format('truetype');
+  font-weight:300;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Rhymes Display';
+  src:local('Rhymes Display Light Italic'),local('Rhymes Text Light Italic'),
+      url('assets/fonts/Rhymes Display Light Italic.ttf') format('truetype');
+  font-weight:300;font-style:italic;font-display:swap;
+}
+@font-face{
+  font-family:'Gal Gothic';
+  src:local('Gal Gothic Regular'),local('GalGothic-Regular'),
+      url('assets/fonts/GalGothic-Regular.otf') format('opentype');
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Gal Gothic';
+  src:local('Gal Gothic Light'),local('GalGothic-Light'),
+      url('assets/fonts/GalGothic-Light.otf') format('opentype');
+  font-weight:300;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:'Gal Gothic';
+  src:local('Gal Gothic Italic'),local('GalGothic-Italic'),
+      url('assets/fonts/GalGothic-Italic.otf') format('opentype');
+  font-weight:400;font-style:italic;font-display:swap;
+}
+
+/* ===================== TOKENS ===================== */
+:root{
+  /* Futures Church palette — Brand Guidelines V1.0 §03 */
+  --violet:#5d1fec;
+  --lemon:#ffff5f;
+  --orange:#ff8432;
+  --sky:#62b4ff;
+  --pink:#e444b9;
+  --ginger:#ac9b25;
+  --copper:#c45236;
+  --brown:#765020;
+  --thistle:#c5c6a4;
+  --judge:#50482e;
+
+  --ink:#14101f;
+  --ink-soft:#3a3350;
+  --paper:#f7f6f2;
+  --paper-warm:#efece3;
+  --line:rgba(20,16,31,.14);
+
+  --violet-deep:#2b0d76;
+  --violet-night:#180742;
+
+  --font-display:'Rhymes Display','Rhymes Text','Times New Roman',Times,serif;
+  --font-body:'Gal Gothic',Arial,Helvetica,'Helvetica Neue',sans-serif;
+
+  --pad:clamp(1.25rem,5vw,6rem);
+  --maxw:1240px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;background:var(--violet-night);color:var(--ink);
+  font-family:var(--font-body);font-weight:300;
+  font-size:clamp(1rem,.55vw + .9rem,1.15rem);line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  /* clip (not hidden) — hidden would make body a scroll container and break
+     position:sticky + IntersectionObserver-driven reveals */
+  overflow-x:clip;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--lemon);color:var(--ink)}
+
+/* ===================== TYPE ===================== */
+.h-mega,.h1,.h2,.h3{
+  font-family:var(--font-body);font-weight:400;
+  text-transform:uppercase;letter-spacing:-.018em;line-height:.92;margin:0;
+}
+.h-mega{font-size:clamp(2.3rem,5.4vw,4.9rem)}
+.h1{font-size:clamp(2.2rem,6.4vw,5rem)}
+.h2{font-size:clamp(1.85rem,4.6vw,3.6rem);line-height:.95}
+.h3{font-size:clamp(1.15rem,1.6vw,1.5rem);letter-spacing:.005em;line-height:1.1}
+.serif{font-family:var(--font-display);font-weight:300;text-transform:none;letter-spacing:0}
+.serif em{font-style:italic}
+
+.eyebrow{
+  font-family:var(--font-body);font-size:.7rem;font-weight:400;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--orange);
+  display:flex;align-items:center;gap:.75rem;margin:0 0 1.5rem;
+}
+.eyebrow::after{content:'';height:1px;flex:1;background:currentColor;opacity:.35;max-width:5rem}
+.lede{font-size:clamp(1.05rem,1.1vw + .85rem,1.35rem);line-height:1.55;max-width:34ch}
+p{margin:0 0 1.15em}
+p:last-child{margin-bottom:0}
+.measure{max-width:62ch}
+
+/* ===================== CHROME ===================== */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:120;background:transparent;pointer-events:none}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--lemon),var(--orange),var(--pink));transform-origin:0 50%}
+
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:110;
+  display:flex;align-items:center;gap:1rem;
+  padding:.85rem var(--pad);
+  background:rgba(24,7,66,.001);
+  transition:background .5s var(--ease),backdrop-filter .5s var(--ease),padding .5s var(--ease),border-color .5s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.is-stuck{
+  background:rgba(24,7,66,.94);backdrop-filter:blur(18px) saturate(1.4);
+  -webkit-backdrop-filter:blur(18px) saturate(1.4);
+  border-bottom-color:rgba(255,255,255,.12);padding-top:.6rem;padding-bottom:.6rem;
+}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;flex:0 0 auto}
+.brand img{height:22px;width:auto}   /* horizontal lockup is ~10:1 */
+.brand .wordmark{
+  font-family:var(--font-body);font-weight:400;text-transform:uppercase;
+  letter-spacing:.16em;font-size:.9rem;line-height:1;
+}
+.brand .wordmark small{display:block;font-size:.5rem;letter-spacing:.3em;opacity:.7;margin-top:.3rem}
+.nav-links{display:none;gap:1.6rem;margin-left:auto;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.nav-links a{text-decoration:none;position:relative;padding:.25rem 0;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--lemon);transition:width .35s var(--ease)}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+@media(min-width:1000px){.nav-links{display:flex}.brand img{height:26px}}
+
+/* ===================== BUTTONS ===================== */
+.btn{
+  --bg:var(--lemon);--fg:var(--ink);
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-family:var(--font-body);font-size:.78rem;font-weight:400;
+  letter-spacing:.15em;text-transform:uppercase;text-decoration:none;
+  padding:1.05em 1.6em;border:0;border-radius:999px;cursor:pointer;
+  background:var(--bg);color:var(--fg);position:relative;overflow:hidden;
+  transition:transform .45s var(--ease),box-shadow .45s var(--ease);
+  box-shadow:0 0 0 rgba(0,0,0,0);
+}
+.btn span{position:relative;z-index:1}
+.btn svg{position:relative;z-index:1;transition:transform .45s var(--ease)}
+.btn::before{
+  content:'';position:absolute;inset:0;background:var(--ink);
+  transform:translateY(101%);transition:transform .5s var(--ease);
+}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 34px -12px rgba(0,0,0,.55)}
+.btn:hover::before{transform:translateY(0)}
+.btn:hover{color:var(--lemon)}
+.btn:hover svg{transform:translateX(5px)}
+.btn--ghost{--bg:transparent;--fg:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+.btn--ghost::before{background:#fff}
+.btn--ghost:hover{color:var(--violet-deep)}
+.btn--nav{padding:.75em 1.15em;font-size:.68rem;margin-left:auto;flex:0 0 auto}
+@media(min-width:1000px){.btn--nav{margin-left:1.8rem}}
+
+/* ===================== HERO ===================== */
+.hero{
+  position:relative;min-height:100svh;display:flex;flex-direction:column;
+  justify-content:space-between;gap:clamp(2rem,6vh,4rem);
+  padding:clamp(5.5rem,13vh,8rem) var(--pad) clamp(3rem,7vh,4.5rem);
+  color:#fff;overflow:hidden;isolation:isolate;
+}
+.hero-bg{position:absolute;inset:0;z-index:-3;background:var(--violet-night);overflow:hidden}
+.hero-bg img{
+  width:100%;height:100%;object-fit:cover;object-position:center 62%;
+  /* slow drift keeps the photo alive without competing with the headline */
+  animation:heroDrift 26s ease-in-out infinite alternate;
+}
+@keyframes heroDrift{from{transform:scale(1.06)}to{transform:scale(1.14)}}
+/* Scrim: heavy at lower-left where the headline sits, clearing to the top-right.
+   Keeps white/lemon type well above 4.5:1 over any part of the photograph. */
+.hero-scrim{
+  position:absolute;inset:0;z-index:-2;pointer-events:none;background:
+    /* top band, so the kicker and nav stay readable */
+    linear-gradient(to bottom,rgba(18,5,52,.58) 0%,rgba(18,5,52,.12) 18%,transparent 30%),
+    /* bottom-weighted pool carrying the headline and buttons */
+    linear-gradient(to top,rgba(18,5,52,.95) 0%,rgba(18,5,52,.87) 27%,rgba(24,7,66,.62) 50%,rgba(24,7,66,.24) 72%,transparent 90%),
+    /* extra depth beneath the left-hand type column */
+    radial-gradient(115% 92% at 4% 96%,rgba(18,5,52,.72) 0%,rgba(31,10,86,.2) 52%,transparent 74%),
+    /* overall violet tint ties the photograph to the palette */
+    linear-gradient(rgba(31,10,86,.40),rgba(31,10,86,.40));
+}
+/* Brand-pattern rays (derived from the logo's pathway-to-horizon motif) */
+.rays{
+  position:absolute;left:50%;bottom:-32vmax;width:150vmax;height:150vmax;
+  transform:translateX(-50%);z-index:-1;pointer-events:none;opacity:.5;
+  background:repeating-conic-gradient(from 200deg at 50% 100%,
+    rgba(255,132,50,.20) 0deg 3.2deg,transparent 3.2deg 10deg);
+  -webkit-mask-image:radial-gradient(60% 60% at 50% 100%,#000 10%,transparent 72%);
+  mask-image:radial-gradient(60% 60% at 50% 100%,#000 10%,transparent 72%);
+  animation:spin 90s linear infinite;
+}
+.rays--2{
+  bottom:auto;top:-55vmax;opacity:.32;
+  background:repeating-conic-gradient(from 20deg at 50% 0%,
+    rgba(98,180,255,.22) 0deg 2.4deg,transparent 2.4deg 11deg);
+  -webkit-mask-image:radial-gradient(55% 55% at 50% 0%,#000 8%,transparent 70%);
+  mask-image:radial-gradient(55% 55% at 50% 0%,#000 8%,transparent 70%);
+  animation-duration:140s;animation-direction:reverse;
+}
+@keyframes spin{to{transform:translateX(-50%) rotate(360deg)}}
+.hero-glow{
+  position:absolute;z-index:-1;width:60vmax;height:60vmax;border-radius:50%;
+  right:-18vmax;top:-14vmax;pointer-events:none;
+  background:radial-gradient(circle,rgba(228,68,185,.42),transparent 62%);
+  filter:blur(20px);
+}
+
+.hero-top{
+  display:flex;flex-wrap:wrap;gap:1rem 2rem;
+  align-items:flex-start;justify-content:space-between;
+}
+.hero-kicker{
+  font-size:clamp(.62rem,.5vw + .5rem,.78rem);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--lemon);display:flex;flex-wrap:wrap;gap:.5rem .9rem;align-items:center;margin:0;
+}
+.hero-kicker i{width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.6;display:inline-block}
+.hero-award{
+  font-family:var(--font-display);font-weight:300;text-transform:none;
+  font-size:clamp(1.35rem,2.4vw,2.1rem);line-height:1.05;color:#fff;margin:0;
+  max-width:14ch;text-align:right;opacity:.92;
+}
+@media(max-width:760px){.hero-award{display:none}}
+
+.hero-h{position:relative;max-width:26ch;margin-top:auto}
+.hero-h .line{display:block;overflow:hidden}
+.hero-h .line > span{display:block;transform:translateY(105%);opacity:0;animation:rise 1.15s var(--ease) forwards}
+.hero-h .line:nth-child(1) > span{animation-delay:.15s}
+.hero-h .line:nth-child(2) > span{animation-delay:.27s}
+.hero-h .line:nth-child(3) > span{animation-delay:.39s}
+.hero-h .line:nth-child(4) > span{animation-delay:.51s}
+.hero-h .line:nth-child(5) > span{animation-delay:.63s}
+@keyframes rise{to{transform:translateY(0);opacity:1}}
+.hl{color:var(--lemon)}
+
+.hero-foot{
+  display:flex;flex-wrap:wrap;
+  gap:1.4rem 2.5rem;align-items:center;
+  opacity:0;animation:fade 1s var(--ease) .85s forwards;
+}
+@keyframes fade{to{opacity:1}}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.hero-meta{
+  font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;
+  border-left:1px solid rgba(255,255,255,.22);padding-left:1.4rem;
+}
+@media(max-width:640px){.hero-meta{border-left:0;padding-left:0}}
+
+.scroll-cue{
+  position:absolute;bottom:clamp(1.1rem,3vh,2rem);right:var(--pad);
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);opacity:0;animation:fade 1s 1.3s forwards;
+}
+.scroll-cue i{display:block;width:1px;height:42px;background:linear-gradient(rgba(255,255,255,.5),transparent);position:relative;overflow:hidden}
+.scroll-cue i::after{content:'';position:absolute;inset:0;background:var(--lemon);animation:trickle 2.1s var(--ease) infinite}
+@keyframes trickle{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+@media(max-width:760px){.scroll-cue{display:none}}
+
+/* ===================== SECTION SHELL ===================== */
+.sec{position:relative;padding:clamp(4.5rem,11vh,9rem) var(--pad)}
+.sec--paper{background:var(--paper);color:var(--ink)}
+.sec--warm{background:var(--paper-warm);color:var(--ink)}
+.sec--violet{background:var(--violet-deep);color:#fff}
+.sec--night{background:var(--violet-night);color:#fff}
+.wrap{max-width:var(--maxw);margin-inline:auto;width:100%}
+.grid2{display:grid;gap:clamp(2rem,4vw,4.5rem)}
+@media(min-width:900px){.grid2{grid-template-columns:1fr 1fr;align-items:start}}
+.grid2--sticky > :first-child{position:sticky;top:clamp(6rem,14vh,9rem)}
+@media(max-width:899px){.grid2--sticky > :first-child{position:static}}
+
+/* reveals */
+[data-rv]{opacity:0;transform:translateY(28px);transition:opacity .95s var(--ease),transform .95s var(--ease)}
+[data-rv].in{opacity:1;transform:none}
+[data-rv][data-d="1"]{transition-delay:.09s}
+[data-rv][data-d="2"]{transition-delay:.18s}
+[data-rv][data-d="3"]{transition-delay:.27s}
+[data-rv][data-d="4"]{transition-delay:.36s}
+[data-rv][data-d="5"]{transition-delay:.45s}
+
+/* ===================== STATS ===================== */
+.stats{display:grid;gap:1rem;margin:2.5rem 0 0}
+@media(min-width:520px){.stats{grid-template-columns:1fr 1fr}}
+.stat{
+  position:relative;padding:1.6rem 1.5rem 1.4rem;border-radius:14px;
+  background:#fff;box-shadow:0 1px 0 var(--line),0 22px 44px -34px rgba(20,16,31,.4);
+  overflow:hidden;
+}
+.stat::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--violet)}
+.stat:nth-child(2)::before{background:var(--orange)}
+.stat b{
+  display:block;font-family:var(--font-body);font-weight:400;
+  font-size:clamp(2.7rem,6vw,4.1rem);line-height:.9;letter-spacing:-.03em;color:var(--violet);
+  font-variant-numeric:tabular-nums;
+}
+.stat:nth-child(2) b{color:var(--copper)}
+.stat p{margin:.6rem 0 0;font-size:.86rem;line-height:1.45;color:var(--ink-soft);max-width:22ch}
+
+/* ===================== QUOTE ===================== */
+.quote{
+  position:relative;margin:2.8rem 0 0;padding:1.9rem 1.8rem;
+  background:var(--lemon);border-radius:14px;color:var(--ink);
+}
+.quote q{
+  quotes:none;display:block;font-family:var(--font-display);font-weight:300;font-style:italic;
+  font-size:clamp(1.3rem,2.3vw,1.85rem);line-height:1.22;
+}
+.quote cite{
+  display:block;margin-top:1rem;font-family:var(--font-body);font-style:normal;
+  font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--violet-deep);
+}
+
+/* ===================== TIMELINE ===================== */
+.tl{margin:2.5rem 0 0;position:relative;list-style:none;padding:0}
+.tl::before{
+  content:'';position:absolute;left:0;top:.4rem;bottom:.4rem;width:1px;
+  background:var(--line);
+}
+.tl li{position:relative;padding:0 0 2.1rem 2rem}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{
+  content:'';position:absolute;left:-4px;top:.45rem;width:9px;height:9px;border-radius:50%;
+  background:var(--orange);box-shadow:0 0 0 5px var(--paper);
+}
+.sec--warm .tl li::before{box-shadow:0 0 0 5px var(--paper-warm)}
+.tl .yr{
+  display:block;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--copper);margin-bottom:.35rem;
+}
+.tl .tx{display:block;max-width:46ch}
+.tl b{font-weight:400;color:var(--violet)}
+
+/* ===================== PILLARS ===================== */
+.pillars{display:grid;gap:1rem;margin:2.6rem 0 0}
+@media(min-width:640px){.pillars{grid-template-columns:1fr 1fr}}
+.pillar{
+  position:relative;background:#fff;border-radius:14px;padding:1.6rem 1.5rem 1.5rem;
+  box-shadow:0 1px 0 var(--line),0 22px 44px -36px rgba(20,16,31,.42);
+  overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+}
+.pillar:hover{transform:translateY(-5px);box-shadow:0 1px 0 var(--line),0 30px 56px -30px rgba(20,16,31,.4)}
+.pillar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--sky)}
+.pillar:nth-child(2)::before{background:var(--orange)}
+.pillar:nth-child(3)::before{background:var(--lemon)}
+.pillar:nth-child(4)::before{background:var(--pink)}
+.pillar .n{
+  font-family:var(--font-body);font-size:2.4rem;line-height:1;color:rgba(20,16,31,.12);
+  display:block;margin-bottom:.5rem;
+}
+.pillar h3{margin:0 0 .2rem}
+.pillar .sub{
+  display:block;font-family:var(--font-display);font-style:italic;font-weight:300;
+  font-size:.95rem;color:var(--copper);margin-bottom:.7rem;
+}
+.pillar p{font-size:.92rem;line-height:1.5;color:var(--ink-soft);margin:0}
+
+/* ===================== FACT TABLE ===================== */
+.facts{margin:2.6rem 0 0;border-top:1px solid var(--line)}
+.fact{
+  display:grid;grid-template-columns:1fr;gap:.15rem;
+  padding:1.05rem 0;border-bottom:1px solid var(--line);
+}
+@media(min-width:600px){.fact{grid-template-columns:11rem 1fr;gap:1.5rem;align-items:baseline}}
+.fact dt{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.fact dd{margin:0;font-size:1.02rem}
+.fact dd b{font-weight:400;color:var(--copper)}
+.tag{
+  display:inline-block;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--lemon);color:var(--ink);padding:.3em .6em;border-radius:4px;margin-left:.5rem;
+  vertical-align:.1em;
+}
+
+/* ===================== PHOTOGRAPHY ===================== */
+.shot{
+  position:relative;margin:2.4rem 0 0;border-radius:16px;overflow:hidden;
+  background:rgba(20,16,31,.08);
+  box-shadow:0 28px 62px -36px rgba(20,16,31,.6);
+}
+.shot img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  transform:scale(1.09);transition:transform 1.5s var(--ease);
+}
+.shot.in img{transform:scale(1)}
+.shot:hover img{transform:scale(1.05)}
+.shot--tall{aspect-ratio:4/5}
+.shot--portrait{aspect-ratio:3/4}
+.shot--wide{aspect-ratio:3/2}
+.shot--pin{object-position:center 30%}
+.sec--violet .shot,.sec--night .shot{box-shadow:0 28px 62px -34px rgba(0,0,0,.7)}
+/* caption sits over the base of the image */
+.shot figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:2.6rem 1.2rem .95rem;
+  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;
+  background:linear-gradient(transparent,rgba(24,7,66,.82));
+}
+@media(prefers-reduced-motion:reduce){
+  .shot img,.shot.in img,.shot:hover img{transform:none}
+}
+
+.callout{
+  margin:2.4rem 0 0;padding:1.6rem 1.6rem;border-radius:14px;
+  background:var(--violet-deep);color:#fff;position:relative;overflow:hidden;
+}
+.callout h3{color:var(--lemon);margin-bottom:.6rem}
+.callout p{font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.85);margin:0;max-width:56ch}
+.callout--sky{background:var(--sky);color:var(--ink)}
+.callout--sky h3{color:var(--violet-deep)}
+.callout--sky p{color:rgba(20,16,31,.78)}
+.callout--bar{border-left:6px solid var(--lemon)}
+
+/* ===================== NUMBERED LIST ===================== */
+.nlist{list-style:none;margin:2.4rem 0 0;padding:0;display:grid;gap:.5rem}
+.nlist li{
+  display:grid;grid-template-columns:3rem 1fr;gap:1rem;align-items:start;
+  padding:1.15rem 0;border-top:1px solid rgba(255,255,255,.16);
+}
+.nlist li:last-child{border-bottom:1px solid rgba(255,255,255,.16)}
+.nlist .n{
+  font-family:var(--font-body);font-size:1rem;letter-spacing:.02em;
+  width:2.4rem;height:2.4rem;display:grid;place-items:center;border-radius:50%;
+  background:var(--sky);color:var(--violet-night);
+}
+.nlist h3{color:var(--lemon);margin:.25rem 0 .4rem}
+.nlist p{margin:0;font-size:.95rem;line-height:1.5;color:rgba(255,255,255,.8);max-width:50ch}
+
+/* ===================== PATHWAY ===================== */
+.path{display:grid;gap:1rem;margin:3rem 0 0;counter-reset:p}
+@media(min-width:860px){.path{grid-template-columns:repeat(3,1fr);gap:1.2rem}}
+.step{
+  position:relative;padding:1.7rem 1.5rem;border-radius:16px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  transition:transform .5s var(--ease),background .5s var(--ease),border-color .5s var(--ease);
+}
+.step:hover{transform:translateY(-6px);background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
+.step .badge{
+  display:inline-block;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:.4em .7em;border-radius:999px;margin-bottom:1rem;
+  background:var(--violet);color:#fff;
+}
+.step:nth-child(2) .badge{background:var(--sky);color:var(--violet-night)}
+.step:nth-child(3) .badge{background:var(--orange);color:var(--ink)}
+.step h3{color:#fff;margin:0 0 .55rem}
+.step p{margin:0;font-size:.92rem;line-height:1.5;color:rgba(255,255,255,.74)}
+.step::after{
+  content:'';position:absolute;left:1.5rem;bottom:-1rem;width:1px;height:1rem;
+  background:linear-gradient(var(--orange),transparent);
+}
+.step:last-child::after{display:none}
+@media(min-width:860px){
+  .step::after{left:auto;bottom:auto;top:2.1rem;right:-1.2rem;width:1.2rem;height:1px;
+    background:linear-gradient(90deg,var(--orange),transparent)}
+}
+
+/* ===================== MARQUEE ===================== */
+.marquee{
+  padding:clamp(2.5rem,6vh,4.5rem) 0;background:var(--lemon);color:var(--ink);
+  overflow:hidden;position:relative;
+}
+.marquee-track{display:flex;width:max-content;animation:slide 34s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.marquee-track span{
+  font-family:var(--font-display);font-weight:300;
+  font-size:clamp(1.6rem,4.4vw,3.4rem);line-height:1.1;white-space:nowrap;
+  padding-right:2.5rem;display:inline-flex;align-items:center;gap:2.5rem;
+}
+.marquee-track span em{font-style:italic;color:var(--violet-deep)}
+.marquee-track span i{
+  width:.5em;height:.5em;border-radius:50%;background:var(--violet-deep);
+  display:inline-block;flex:0 0 auto;opacity:.8;
+}
+
+/* ===================== CTA ===================== */
+.cta{position:relative;overflow:hidden;isolation:isolate;text-align:left}
+.cta-inner{max-width:var(--maxw);margin-inline:auto;position:relative;z-index:1}
+.cta .h1{max-width:22ch}
+.cta-sub{margin:1.6rem 0 2.4rem;max-width:48ch;font-size:clamp(1rem,.6vw + .9rem,1.2rem);color:rgba(255,255,255,.82)}
+.cta-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+.cta-grid{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:900px){.cta-grid{grid-template-columns:1.35fr .65fr;gap:4rem}}
+.cta-grid .shot{margin-top:0}
+@media(max-width:899px){.cta-grid .shot{max-width:22rem}}
+.cta-card{
+  margin-top:3rem;padding:1.6rem;border-radius:16px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  display:grid;gap:1.4rem;
+}
+@media(min-width:760px){.cta-card{grid-template-columns:1fr 1fr;gap:2.5rem}}
+.cta-card h3{color:var(--lemon);margin:0 0 .5rem}
+.cta-card p{margin:0;font-size:.92rem;color:rgba(255,255,255,.75);line-height:1.55}
+.cta-card a.inline{color:var(--lemon);text-decoration:none;border-bottom:1px solid rgba(255,255,95,.4);transition:border-color .3s}
+.cta-card a.inline:hover{border-color:var(--lemon)}
+
+/* ===================== FOOTER ===================== */
+.foot{background:var(--lemon);color:var(--ink);padding:clamp(3rem,7vh,5rem) var(--pad) 2.5rem}
+.foot-top{
+  display:grid;gap:2rem;padding-bottom:2.2rem;border-bottom:1px solid rgba(20,16,31,.18);
+}
+@media(min-width:820px){.foot-top{grid-template-columns:1.1fr 1fr;align-items:start}}
+.foot .brand{color:var(--ink)}
+.foot-link{
+  display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
+  font-size:.95rem;color:var(--violet-deep);border-bottom:1px solid rgba(43,13,118,.3);
+  padding-bottom:2px;transition:border-color .3s,gap .3s var(--ease);
+}
+.foot-link:hover{border-color:var(--violet-deep);gap:.75rem}
+.foot-links{display:grid;gap:.85rem;justify-items:start}
+.fineprint{
+  margin-top:2rem;font-size:.78rem;line-height:1.62;color:rgba(20,16,31,.78);max-width:80ch;
+}
+.foot-base{
+  margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;
+  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,16,31,.68);
+}
+
+/* ===================== MOTION PREFS ===================== */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  [data-rv]{opacity:1!important;transform:none!important}
+  .hero-h .line > span{transform:none;opacity:1}
+  .hero-foot,.scroll-cue{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><span id="bar"></span></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <img src="assets/futures-logo-white.png" alt="Futures Church"
+         onerror="this.remove();document.getElementById('wm').hidden=false">
+    <span class="wordmark" id="wm" hidden>Futures<small>Church</small></span>
+  </a>
+  <nav class="nav-links">
+    <a href="#moment">The moment</a>
+    <a href="#course">The course</a>
+    <a href="#church">Your church</a>
+    <a href="#pathway">The pathway</a>
+  </nav>
+  <a class="btn btn--nav" href="#register"><span>Register interest</span></a>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="assets/photos/hero-bg.jpg" alt="" width="2400" height="1600"
+         fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="rays"></div>
+  <div class="rays rays--2"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-top">
+    <p class="hero-kicker">
+      <span>Seed a pioneering culture</span><i></i>
+      <span>Train planters</span><i></i>
+      <span>Multiply leaders</span>
+    </p>
+    <p class="hero-award">Diploma of Church&nbsp;Planting Leadership</p>
+  </div>
+
+  <h1 class="h-mega hero-h">
+    <span class="line"><span>The next planters are</span></span>
+    <span class="line"><span>already in your church.</span></span>
+    <span class="line"><span class="hl">This gives them</span></span>
+    <span class="line"><span class="hl">a pathway.</span></span>
+  </h1>
+
+  <div class="hero-foot">
+    <div class="hero-actions">
+      <a class="btn" href="#register">
+        <span>Register your interest</span>
+        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+          <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a class="btn btn--ghost" href="#course"><span>See the course</span></a>
+    </div>
+    <p class="hero-meta">
+      <span>AQF Level 5</span><span>8 subjects</span><span>1 year</span><span>FEE-HELP eligible</span>
+    </p>
+  </div>
+
+  <div class="scroll-cue"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- ============ 01 THE MOMENT ============ -->
+<section class="sec sec--paper" id="moment">
+  <div class="wrap grid2 grid2--sticky">
+    <div>
+      <p class="eyebrow" data-rv>Section 01 — The moment</p>
+      <h2 class="h1" data-rv data-d="1">A planting movement at a critical moment.</h2>
+      <div class="stats">
+        <div class="stat" data-rv data-d="2">
+          <b data-count="78" data-suffix="%">0%</b>
+          <p>of Australians not connected to a local church</p>
+        </div>
+        <div class="stat" data-rv data-d="3">
+          <b data-count="500">0</b>
+          <p>new ACC churches to be planted by 2032</p>
+        </div>
+      </div>
+      <figure class="shot shot--wide" data-rv data-d="4" style="margin-top:1rem">
+        <img src="assets/photos/moment.jpg" alt="Students in discussion around a table at Futures College"
+             width="1200" height="1800" loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="measure">
+      <p data-rv data-d="2">The ACC is Australia's largest Pentecostal denomination and its most prolific church planting movement. Research from Exponential Australia in 2025 names the number one impediment to planting more churches as simply this: the lack of potential church planters. Not funding. Not vision. Not strategy. <b style="font-weight:400;color:var(--violet)">People.</b></p>
+      <p data-rv data-d="3">There is no accredited pathway that seeds a pioneering culture across the whole church, not just in the individual who eventually puts their hand up. The result is that churches are doing two things simultaneously: pastoring their existing community faithfully, and hoping that the next planter will emerge from somewhere — without creating the conditions for that emergence.</p>
+      <figure class="quote" data-rv data-d="4">
+        <q>The problem isn't in the harvest. It's in raising more workers to send into it.</q>
+        <cite>Luke 10:2</cite>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 THE GAP ============ -->
+<section class="sec sec--warm" id="gap">
+  <div class="wrap grid2">
+    <div>
+      <p class="eyebrow" data-rv>Section 02 — The gap</p>
+      <h2 class="h1" data-rv data-d="1">What the movement has been missing.</h2>
+      <figure class="shot shot--tall" data-rv data-d="2">
+        <img src="assets/photos/gap.jpg" alt="A student reading alone in the college common room"
+             width="1200" height="1800" loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="measure">
+      <p class="lede" data-rv data-d="2">The ACC has excellent tools for people who have already decided to plant.</p>
+      <p data-rv data-d="3">What it hasn't had is an accredited, practitioner-led pathway that works <em style="font-family:var(--font-display);font-size:1.1em">upstream</em> — forming planting instinct in emerging leaders who are still serving faithfully in their sending church and haven't yet named what they sense.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 ORIGIN ============ -->
+<section class="sec sec--paper" id="origin">
+  <div class="wrap grid2 grid2--sticky">
+    <div>
+      <p class="eyebrow" data-rv>Section 03 — The origin</p>
+      <h2 class="h1" data-rv data-d="1">Where this curriculum came from.</h2>
+      <p class="serif" data-rv data-d="2" style="font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.3;margin-top:1.4rem;max-width:26ch"><em>Not a theory of church planting. A field manual forged over decades.</em></p>
+    </div>
+    <ol class="tl">
+      <li data-rv data-d="2">
+        <span class="yr">1922</span>
+        <span class="tx">Futures Church founded — a 100-year legacy begins.</span>
+      </li>
+      <li data-rv data-d="3">
+        <span class="yr">20+ years</span>
+        <span class="tx">Campus planting across Australia, USA, Indonesia &amp; Brazil. 25,000+ leaders sent into ministry worldwide.</span>
+      </li>
+      <li data-rv data-d="4">
+        <span class="yr">2026</span>
+        <span class="tx">Curriculum contributed to Alphacrucis — accredited and released to the ACC movement. <b>The blueprint belongs to the movement now.</b></span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 04 THE COURSE ============ -->
+<section class="sec sec--warm" id="course">
+  <div class="wrap">
+    <p class="eyebrow" data-rv>Section 04 — The course</p>
+    <h2 class="h1" data-rv data-d="1" style="max-width:24ch">Eight subjects. Four pillars. One year.</h2>
+
+    <div class="pillars">
+      <article class="pillar" data-rv data-d="2">
+        <span class="n">1</span>
+        <h3 class="h3">Biblical foundations</h3>
+        <span class="sub">Applied Theology · NT Survey</span>
+        <p>Understanding church planting and pioneering through the lens of the Word.</p>
+      </article>
+      <article class="pillar" data-rv data-d="3">
+        <span class="n">2</span>
+        <h3 class="h3">Leadership development</h3>
+        <span class="sub">Personal · Teams</span>
+        <p>Character before capacity. Formation before function.</p>
+      </article>
+      <article class="pillar" data-rv data-d="4">
+        <span class="n">3</span>
+        <h3 class="h3">Planting philosophy &amp; strategy</h3>
+        <span class="sub">Philosophy · Strategy</span>
+        <p>Convictions that hold a planter for decades — and a framework to launch.</p>
+      </article>
+      <article class="pillar" data-rv data-d="5">
+        <span class="n">4</span>
+        <h3 class="h3">Practical ministry</h3>
+        <span class="sub">100-hr placement · Elective</span>
+        <p>Ministry learned inside real ministry. Serve in one, don't just study one.</p>
+      </article>
+    </div>
+
+    <dl class="facts">
+      <div class="fact" data-rv><dt>Award</dt><dd>Diploma of Church Planting Leadership <span class="tag">AQF Level 5</span></dd></div>
+      <div class="fact" data-rv><dt>Delivered by</dt><dd>Alphacrucis University College</dd></div>
+      <div class="fact" data-rv><dt>Duration</dt><dd>1 year full-time · up to 4 years part-time</dd></div>
+      <div class="fact" data-rv><dt>Delivery</dt><dd>Weekly evenings + 2 intensives</dd></div>
+      <div class="fact" data-rv><dt>Fee</dt><dd><b>$1,565</b> per subject · <b>$12,520</b> total <span class="tag">FEE-HELP eligible</span></dd></div>
+    </dl>
+
+    <div class="callout callout--bar" data-rv data-d="1">
+      <h3 class="h3">The practitioner principle</h3>
+      <p>Every subject has been created by men and women who are currently doing what they teach. Pioneers imparting to the next generation. Not just theory from teachers, but impartation from practitioners.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 CULTURE CHANGE ============ -->
+<section class="sec sec--violet" id="church">
+  <div class="wrap grid2 grid2--sticky">
+    <div>
+      <p class="eyebrow" data-rv style="color:var(--lemon)">Section 05 — Culture change</p>
+      <h2 class="h1" data-rv data-d="1">Not just what it does to a student. What it does to <span class="hl serif" style="text-transform:none"><em>a church.</em></span></h2>
+      <figure class="shot shot--wide" data-rv data-d="2">
+        <img src="assets/photos/culture.jpg" alt="Students gathered around tables together, Bibles open"
+             width="1200" height="1800" loading="lazy" decoding="async">
+      </figure>
+      <p data-rv data-d="3" style="margin-top:1.6rem;max-width:44ch;color:rgba(255,255,255,.82)">A church that hosts the Diploma does not simply graduate one or two trained planters. Something happens to the whole community. Multiplication conversations appear across the church. The language of pioneering shows up organically in different places. Volunteers who have never considered planting begin asking questions they hadn't known to ask.</p>
+    </div>
+    <ol class="nlist">
+      <li data-rv data-d="2">
+        <span class="n">1</span>
+        <div><h3 class="h3">Pipeline clarity</h3>
+        <p>Leaders who sense a call now have a defined pathway without leaving the church they love.</p></div>
+      </li>
+      <li data-rv data-d="3">
+        <span class="n">2</span>
+        <div><h3 class="h3">Cultural language</h3>
+        <p>The vocabulary of multiplication becomes part of how the church tells its story — and its future.</p></div>
+      </li>
+      <li data-rv data-d="4">
+        <span class="n">3</span>
+        <div><h3 class="h3">Apostolic confidence</h3>
+        <p>The sending church grows in conviction that planting is the call on this church, in this season.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ 06 HOW IT WORKS ============ -->
+<section class="sec sec--paper" id="how">
+  <div class="wrap grid2">
+    <div>
+      <p class="eyebrow" data-rv>Section 06 — How it works</p>
+      <h2 class="h1" data-rv data-d="1">Inside the Local Church College.</h2>
+      <figure class="shot shot--tall" data-rv data-d="2">
+        <img src="assets/photos/lcc.jpg" alt="A student studying at a Local Church College session"
+             width="1200" height="1800" loading="lazy" decoding="async">
+      </figure>
+    </div>
+    <div class="measure">
+      <p data-rv data-d="2">The Diploma of Church Planting Leadership is delivered through Alphacrucis University College's <b style="font-weight:400;color:var(--violet)">Local Church College</b> framework — the same model already powering diplomas in ministry, leadership, and business across the ACC.</p>
+      <p data-rv data-d="3">A hosting church provides space and a local LCC coordinator. Alphacrucis handles accreditation, enrolment, and academic oversight — exactly as it does for every other LCC award.</p>
+      <div class="callout callout--sky callout--bar" data-rv data-d="4" style="border-left-color:var(--violet)">
+        <h3 class="h3">Typical runway to launch</h3>
+        <p>4–6 months from initial interest to a live cohort. Every hosting LCC receives dedicated training and ongoing mentoring. No church figures it out alone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 PATHWAY ============ -->
+<section class="sec sec--night" id="pathway">
+  <div class="wrap">
+    <p class="eyebrow" data-rv>Section 07 — The pathway</p>
+    <h2 class="h1" data-rv data-d="1" style="max-width:26ch">Year 1 shapes a planter. Year 2 builds a <span class="hl">multiplier.</span></h2>
+
+    <div class="path">
+      <article class="step" data-rv data-d="2">
+        <span class="badge">2026 – 27</span>
+        <h3 class="h3">Diploma of Church Planting Leadership</h3>
+        <p>AQF Level 5 · 8 subjects · FEE-HELP eligible. Formation, philosophy, strategy and a 100-hour placement.</p>
+      </article>
+      <article class="step" data-rv data-d="3">
+        <span class="badge">2028</span>
+        <h3 class="h3">Associate Degree of Church Planting Leadership</h3>
+        <p>Pastoral care, financial stewardship, systems for multiplication, leading through accelerating change.</p>
+      </article>
+      <article class="step" data-rv data-d="4">
+        <span class="badge">Beyond</span>
+        <h3 class="h3">Alphacrucis higher education awards</h3>
+        <p>Clear pathways into broader undergraduate qualifications.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Every generation needs <em>leaders</em> who carry faith with <em>courage.</em><i></i></span>
+    <span>Every generation needs <em>leaders</em> who carry faith with <em>courage.</em><i></i></span>
+  </div>
+</div>
+
+<!-- ============ 08 CTA ============ -->
+<section class="sec sec--violet cta" id="register">
+  <div class="rays" style="opacity:.28;bottom:-40vmax"></div>
+  <div class="cta-inner">
+   <div class="cta-grid">
+    <div>
+    <p class="eyebrow" data-rv style="color:var(--lemon)">Section 08 — Next steps</p>
+    <h2 class="h1" data-rv data-d="1">Are you ready to help <span class="hl">raise them?</span></h2>
+    <p class="cta-sub" data-rv data-d="2">Let's chat about your specific context and how this diploma can work in your church. One conversation is all it takes to start.</p>
+
+    <div class="cta-actions" data-rv data-d="3">
+      <a class="btn" id="mailCta" href="#">
+        <span>Register your interest</span>
+        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+          <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a class="btn btn--ghost" href="https://futures.church/college/au" target="_blank" rel="noopener">
+        <span>Unlock a free lesson</span>
+      </a>
+    </div>
+    </div>
+    <figure class="shot shot--portrait" data-rv data-d="3">
+      <img src="assets/photos/invite.jpg" alt="A student in conversation at Futures College"
+           width="1200" height="1800" loading="lazy" decoding="async">
+    </figure>
+   </div>
+
+    <div class="cta-card" data-rv data-d="4">
+      <div>
+        <h3 class="h3">Talk to a person</h3>
+        <p>Reach out directly to <a class="inline" id="mailPlain" href="#">david.begley@futures.church</a>. Tell us about your church, your context, and the leaders you already have in mind.</p>
+      </div>
+      <div>
+        <h3 class="h3">Explore the award</h3>
+        <p>Full accredited course detail lives with Alphacrucis:<br>
+        <a class="inline" href="https://ac.edu.au/awards/diploma-church-planting-leadership" target="_blank" rel="noopener">ac.edu.au/awards/diploma-church-planting-leadership</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="foot-top">
+    <div>
+      <a class="brand" href="#top" style="margin-bottom:1.4rem;display:inline-flex">
+        <img src="assets/futures-logo.png" alt="Futures Church" style="height:30px"
+             onerror="this.remove();document.getElementById('wm2').hidden=false">
+        <span class="wordmark" id="wm2" hidden>Futures<small>Church</small></span>
+      </a>
+      <p style="max-width:34ch;font-size:.95rem;color:rgba(20,16,31,.7)">Seed a pioneering culture. Train planters. Multiply leaders.</p>
+    </div>
+    <div class="foot-links">
+      <a class="foot-link" id="mailFoot" href="#">
+        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+          <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Register your interest
+      </a>
+      <a class="foot-link" href="https://futures.church/college/au" target="_blank" rel="noopener">futures.church/college/au</a>
+      <a class="foot-link" href="https://ac.edu.au/awards/diploma-church-planting-leadership" target="_blank" rel="noopener">ac.edu.au/awards/diploma-church-planting-leadership</a>
+    </div>
+  </div>
+
+  <p class="fineprint">The Diploma of Church Planting Leadership is a one-year, FEE-HELP-eligible higher education qualification accredited and delivered by Alphacrucis University College. Curriculum developed and contributed by a practising ACC-affiliated church planting network, drawing on a 100-year legacy and more than twenty years of church planting around the world. Every subject taught exclusively by practising senior pastors, church planters, and national ministry leaders. Year 2 Associate Degree available from 2028.</p>
+
+  <div class="foot-base">
+    <span>Accredited and delivered by Alphacrucis University College</span>
+    <span>© <span id="yr">2026</span> Futures Church</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- mailto CTAs (built in JS to keep the address out of naive scrapers) ---- */
+  var addr = ['david.begley','futures.church'].join('@');
+  var subject = 'Register interest — Diploma of Church Planting Leadership';
+  var body = [
+    'Hi David,',
+    '',
+    "I'd like to register my interest in the Diploma of Church Planting Leadership.",
+    '',
+    'Name:',
+    'Church / organisation:',
+    'Role:',
+    'Location:',
+    'Phone:',
+    '',
+    'Where we are up to (emerging leaders in mind, timing, questions):',
+    '',
+    ''
+  ].join('\r\n');
+  var href = 'mailto:' + addr + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  ['mailCta','mailFoot','mailPlain'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){ el.setAttribute('href', href); }
+  });
+  var plain = document.getElementById('mailPlain');
+  if(plain){ plain.textContent = addr; }
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- scroll-reveal targets ----
+     Rect-based rather than IntersectionObserver-only: a body-level scroll
+     container can stop observer callbacks firing, and content stranded at
+     opacity:0 is the one failure mode worth engineering out entirely. */
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-rv]'));
+  function sweepReveals(){
+    if(!items.length){ return; }
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    for(var i = items.length - 1; i >= 0; i--){
+      var r = items[i].getBoundingClientRect();
+      if(r.top < vh * 0.9 && r.bottom > -1){       // in view, or already passed
+        items[i].classList.add('in');
+        items.splice(i, 1);
+      }
+    }
+  }
+
+  /* ---- animated stat counters ---- */
+  var counters = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  function runCounter(el){
+    var target = parseFloat(el.getAttribute('data-count'));
+    var suffix = el.getAttribute('data-suffix') || '';
+    if(reduce){ el.textContent = target + suffix; return; }
+    var dur = 1500, t0 = null;
+    function tick(ts){
+      if(t0 === null){ t0 = ts; }
+      var p = Math.min((ts - t0) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
+      if(p < 1){ window.requestAnimationFrame(tick); }
+    }
+    window.requestAnimationFrame(tick);
+  }
+  function sweepCounters(){
+    if(!counters.length){ return; }
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    for(var i = counters.length - 1; i >= 0; i--){
+      var r = counters[i].getBoundingClientRect();
+      if(r.top < vh * 0.85 && r.bottom > 0){
+        runCounter(counters[i]);
+        counters.splice(i, 1);
+      }
+    }
+  }
+
+  /* ---- hero parallax ---- */
+  var heroH = document.querySelector('.hero-h'), glow = document.querySelector('.hero-glow');
+  function parallax(y){
+    if(reduce){ return; }
+    var vh = window.innerHeight || 800;
+    if(y > vh * 1.2){ return; }
+    if(heroH){
+      heroH.style.transform = 'translateY(' + (y * 0.14) + 'px)';
+      heroH.style.opacity = String(Math.max(1 - y / (vh * 0.85), 0));
+    }
+    if(glow){ glow.style.transform = 'translate3d(' + (y * -0.06) + 'px,' + (y * 0.1) + 'px,0)'; }
+  }
+
+  /* ---- single rAF-throttled scroll loop ---- */
+  var bar = document.getElementById('bar'), nav = document.getElementById('nav'), ticking = false;
+  function frame(){
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(y / h, 1) : 0) + ')';
+    nav.classList.toggle('is-stuck', y > 40);
+    sweepReveals();
+    sweepCounters();
+    parallax(y);
+    ticking = false;
+  }
+  function request(){
+    if(!ticking){ ticking = true; window.requestAnimationFrame(frame); }
+  }
+  window.addEventListener('scroll', request, {passive:true});
+  window.addEventListener('resize', request, {passive:true});
+  window.addEventListener('load', request);
+
+  if(reduce){
+    items.forEach(function(el){ el.classList.add('in'); });
+    items.length = 0;
+  }
+  frame();
+})();
+</script>
+</body>
+</html>
