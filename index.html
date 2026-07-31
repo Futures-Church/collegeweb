@@ -385,13 +385,42 @@ p:last-child{margin-bottom:0}
   font-size:.95rem;color:var(--copper);margin-bottom:.7rem;
 }
 .pillar p{font-size:.92rem;line-height:1.5;color:var(--ink-soft);margin:0}
-/* Eight subjects, two per pillar. The `> span` is deliberate: the qualifier
-   span nested inside <b> must not pick up the description styling. */
-.pillar .subjects{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:.9rem}
-.pillar .subjects li{padding-top:.9rem;border-top:1px solid rgba(20,16,31,.1)}
-.pillar .subjects b{display:block;font-weight:500;font-size:.93rem;line-height:1.35;color:var(--ink)}
+/* Eight subjects, two per pillar, each expandable via native <details>.
+   Child combinators throughout are deliberate: the Elective's nested option
+   list must not inherit the row border or the uppercase label styling. */
+.pillar .subjects{list-style:none;margin:1rem 0 0;padding:0;display:grid;gap:0}
+.pillar .subjects > li{border-top:1px solid rgba(20,16,31,.1)}
+.pillar .subjects summary{
+  list-style:none;cursor:pointer;position:relative;padding:.9rem 1.5rem .9rem 0;
+  -webkit-tap-highlight-color:transparent;
+}
+.pillar .subjects summary::-webkit-details-marker{display:none}
+.pillar .subjects summary > b{display:block;font-weight:500;font-size:.93rem;line-height:1.35;color:var(--ink)}
 .pillar .subjects .qual{font-weight:400;font-size:.88em;color:var(--ink-soft)}
-.pillar .subjects li > span{display:block;margin-top:.3rem;font-size:.86rem;line-height:1.5;color:var(--ink-soft)}
+.pillar .subjects .desc{display:block;margin-top:.3rem;font-size:.86rem;line-height:1.5;color:var(--ink-soft)}
+/* chevron */
+.pillar .subjects summary::after{
+  content:'';position:absolute;right:.2rem;top:1.2rem;width:.46rem;height:.46rem;
+  border-right:1.6px solid rgba(20,16,31,.4);border-bottom:1.6px solid rgba(20,16,31,.4);
+  transform:rotate(45deg);transform-origin:center;
+  transition:transform .3s var(--ease),border-color .3s var(--ease);
+}
+.pillar .subjects details[open] summary::after{transform:rotate(-135deg)}
+.pillar .subjects summary:hover::after{border-color:var(--violet)}
+.pillar .subjects summary:focus-visible{outline:2px solid var(--violet);outline-offset:2px;border-radius:6px}
+/* expanded panel */
+.pillar .subjects .topics{
+  margin:0 0 .95rem;padding:.8rem .9rem;border-radius:10px;
+  background:rgba(93,31,236,.055);font-size:.82rem;line-height:1.6;color:var(--ink-soft);
+}
+.pillar .subjects .topics > b{
+  display:block;margin-bottom:.35rem;font-size:.68rem;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--copper);
+}
+.pillar .subjects .opts{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.pillar .subjects .opts > li{font-size:.82rem;line-height:1.5}
+.pillar .subjects .opts b{font-weight:500;color:var(--ink)}
+@media(prefers-reduced-motion:reduce){.pillar .subjects summary::after{transition:none}}
 
 /* ===================== FACT TABLE ===================== */
 .facts{margin:2.6rem 0 0;border-top:1px solid var(--line)}
@@ -515,6 +544,33 @@ p:last-child{margin-bottom:0}
 .cta .h1{max-width:22ch}
 .cta-sub{margin:1.6rem 0 2.4rem;max-width:48ch;font-size:clamp(1rem,.6vw + .9rem,1.2rem);color:rgba(255,255,255,.82)}
 .cta-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+/* ---- register-interest form (Netlify Forms) ---- */
+.reg-form{margin-top:2.1rem;max-width:34rem}
+.reg-form .fields{display:grid;gap:1rem}
+@media(min-width:560px){.reg-form .fields{grid-template-columns:1fr 1fr}}
+.field label{
+  display:block;margin-bottom:.42rem;font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.62);
+}
+.field input{
+  width:100%;padding:.78rem .9rem;border-radius:10px;font:inherit;font-size:.95rem;
+  color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);
+  transition:border-color .25s var(--ease),background .25s var(--ease);
+}
+.field input:hover{border-color:rgba(255,255,255,.34)}
+.field input:focus{outline:none;border-color:var(--lemon);background:rgba(255,255,255,.12)}
+.field input:focus-visible{outline:2px solid var(--lemon);outline-offset:2px}
+.field input:invalid:not(:placeholder-shown){border-color:rgba(255,140,140,.7)}
+.form-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;margin-top:1.4rem}
+.form-actions .btn[disabled]{opacity:.55;cursor:progress;transform:none}
+/* honeypot — off-screen rather than display:none so bots still fill it */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-msg{
+  margin-top:1.8rem;max-width:34rem;padding:1.05rem 1.25rem;border-radius:12px;
+  background:var(--lemon);color:var(--ink);font-size:.98rem;line-height:1.5;
+}
+.form-msg--err{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.form-msg--err a{color:var(--lemon)}
 .cta-grid{display:grid;gap:2.5rem;align-items:center}
 @media(min-width:900px){.cta-grid{grid-template-columns:1.35fr .65fr;gap:4rem}}
 .cta-grid .shot{margin-top:0}
@@ -717,32 +773,62 @@ p:last-child{margin-bottom:0}
         <span class="n">1</span>
         <h3 class="h3">Biblical foundations</h3>
         <ul class="subjects">
-          <li><b>Applied Theology 1</b><span>Core Christian doctrines, taught for today.</span></li>
-          <li><b>New Testament Survey &amp; The Birth of the Church</b><span>The New Testament and Acts, through the lens of church planting.</span></li>
+          <li><details>
+            <summary><b>Applied Theology 1</b><span class="desc">Core Christian doctrines, taught for today.</span></summary>
+            <div class="topics"><b>Lecture topics</b>Hermeneutics · Christology · Holy Spirit · Salvation</div>
+          </details></li>
+          <li><details>
+            <summary><b>New Testament Survey &amp; The Birth of the Church</b><span class="desc">The New Testament and Acts, through the lens of church planting.</span></summary>
+            <div class="topics"><b>Lecture topics</b>Life of Jesus &amp; the Gospels · The Global Mission &amp; Inclusion of the Gentiles · Paul's Missionary Journeys · The Pastoral Epistles</div>
+          </details></li>
         </ul>
       </article>
       <article class="pillar" data-rv data-d="3">
         <span class="n">2</span>
         <h3 class="h3">Leadership development</h3>
         <ul class="subjects">
-          <li><b>Personal Leadership</b><span>Building the leader before building the team.</span></li>
-          <li><b>Church Growth Strategies 1</b><span>Multiplication thinking over addition-based growth.</span></li>
+          <li><details>
+            <summary><b>Personal Leadership</b><span class="desc">Building the leader before building the team.</span></summary>
+            <div class="topics"><b>Lecture topics</b>Principles to lead your life · Effective and potent prayer · How to hear God's voice · Organising self</div>
+          </details></li>
+          <li><details>
+            <summary><b>Church Growth Strategies 1</b><span class="desc">Multiplication thinking over addition-based growth.</span></summary>
+            <div class="topics"><b>Lecture topics</b>Biblical foundations of church multiplication · Limitations of addition-based leadership · Applying multiplication to team building · Building environments that release new church expressions</div>
+          </details></li>
         </ul>
       </article>
       <article class="pillar" data-rv data-d="4">
         <span class="n">3</span>
         <h3 class="h3">Planting philosophy &amp; strategy</h3>
         <ul class="subjects">
-          <li><b>Church Planting - Philosophy</b><span>A theology of the Church and the conviction to plant one.</span></li>
-          <li><b>Christian Living Fundamentals</b><span>Grace and identity as the foundation for healthy leadership.</span></li>
+          <li><details>
+            <summary><b>Church Planting - Philosophy</b><span class="desc">A theology of the Church and the conviction to plant one.</span></summary>
+            <div class="topics"><b>Lecture topics</b>The Bride and the Body · Nourishing the Church · Building through the gifts of the church · Faith to plant beyond the ordinary</div>
+          </details></li>
+          <li><details>
+            <summary><b>Christian Living Fundamentals</b><span class="desc">Grace and identity as the foundation for healthy leadership.</span></summary>
+            <div class="topics"><b>Lecture topics</b>Biblical foundations of grace and the finished work of Christ · Grace vs. performance · Identity and how it shapes leadership · Building sustainable, grace-centred ministry</div>
+          </details></li>
         </ul>
       </article>
       <article class="pillar" data-rv data-d="5">
         <span class="n">4</span>
         <h3 class="h3">Practical ministry</h3>
         <ul class="subjects">
-          <li><b>Professional Practice <span class="qual">(100-hr placement)</span></b><span>Hands-on ministry under an experienced pastor.</span></li>
-          <li><b>Elective <span class="qual">(Kids, Worship, Youth Ministry, or Field Study)</span></b><span>A specialisation matched to the student's calling.</span></li>
+          <li><details>
+            <summary><b>Professional Practice <span class="qual">(100-hr placement)</span></b><span class="desc">Hands-on ministry under an experienced pastor.</span></summary>
+            <div class="topics"><b>What it involves</b>Working alongside an experienced mentor, you'll complete a 100-hour placement in a format matched to your calling — for example, 8 weekly hours in a local church's youth department. Includes mentoring &amp; discipling, and managing relationships.</div>
+          </details></li>
+          <li><details>
+            <summary><b>Elective <span class="qual">(Kids, Worship, or Youth Ministry)</span></b><span class="desc">A specialisation matched to the student's calling.</span></summary>
+            <div class="topics"><b>Options</b>
+              <ul class="opts">
+                <li><b>Kids Ministry</b> — curriculum development, team recruitment, discipleship.</li>
+                <li><b>Worship Ministry</b> — production &amp; tech, service planning, launch strategy, biblical foundations of worship.</li>
+                <li><b>Youth Ministry</b> — pastoral care in a youth context, developing leadership teams, running a youth ministry program.</li>
+              </ul>
+            </div>
+          </details></li>
         </ul>
       </article>
     </div>
@@ -757,7 +843,7 @@ p:last-child{margin-bottom:0}
 
     <div class="callout callout--bar" data-rv data-d="1">
       <h3 class="h3">The practitioner principle</h3>
-      <p>Every subject has been created by men and women who are currently doing what they teach. Pioneers imparting to the next generation. Not just theory from teachers, but impartation from practitioners.</p>
+      <p>Every subject has been created by men and women who are currently doing what they teach. Pioneers imparting to the next generation — including Ps Ashley Evans, Ps Jane Evans, Ps Russell Evans, Ps Andy Kirk, Ps Dave Edgar, and Ps Sam Long, alongside many other church planters from across the movement, with more contributors added as the course grows.</p>
     </div>
   </div>
 </section>
@@ -861,17 +947,41 @@ p:last-child{margin-bottom:0}
     <h2 class="h1" data-rv data-d="1">Are you ready to help <span class="hl">raise them?</span></h2>
     <p class="cta-sub" data-rv data-d="2">Let's chat about your specific context and how this diploma can work in your church. One conversation is all it takes to start.</p>
 
-    <div class="cta-actions" data-rv data-d="3">
-      <a class="btn" id="mailCta" href="#">
-        <span>Register your interest</span>
-        <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
-          <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <a class="btn btn--ghost" href="https://futures.church/college/au" target="_blank" rel="noopener">
-        <span>Unlock a free lesson</span>
-      </a>
-    </div>
+    <form class="reg-form" id="regForm" name="register-interest" method="POST"
+          data-netlify="true" netlify-honeypot="bot-field" data-rv data-d="3">
+      <input type="hidden" name="form-name" value="register-interest">
+      <p class="hp"><label>Leave this field empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <div class="fields">
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="f-church">Church / organisation</label>
+          <input id="f-church" name="church" type="text" autocomplete="organization" required>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn" type="submit" id="regSubmit">
+          <span>Register your interest</span>
+          <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
+            <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <a class="btn btn--ghost" href="https://futures.church/college/au" target="_blank" rel="noopener">
+          <span>Unlock a free lesson</span>
+        </a>
+      </div>
+    </form>
+    <p class="form-msg" id="formMsg" role="status" aria-live="polite" hidden></p>
     </div>
     <figure class="shot shot--portrait" data-rv data-d="3">
       <img src="assets/photos/invite.jpg" alt="A student in conversation at Futures College"
@@ -905,7 +1015,7 @@ p:last-child{margin-bottom:0}
       <p style="max-width:34ch;font-size:.95rem;color:rgba(20,16,31,.7)">Seed a pioneering culture. Train planters. Multiply leaders.</p>
     </div>
     <div class="foot-links">
-      <a class="foot-link" id="mailFoot" href="#">
+      <a class="foot-link" href="#register">
         <svg width="15" height="10" viewBox="0 0 15 10" fill="none" aria-hidden="true">
           <path d="M1 5h12M9 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -929,7 +1039,9 @@ p:last-child{margin-bottom:0}
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---- mailto CTAs (built in JS to keep the address out of naive scrapers) ---- */
+  /* ---- "Talk to a person" mailto (built in JS to keep the address out of
+     naive scrapers). The register CTAs are a real form now — this is the only
+     remaining mailto on the page, kept as a deliberate secondary option. ---- */
   var addr = ['david.begley','futures.church'].join('@');
   var subject = 'Register interest — Diploma of Church Planting Leadership';
   var body = [
@@ -948,12 +1060,43 @@ p:last-child{margin-bottom:0}
     ''
   ].join('\r\n');
   var href = 'mailto:' + addr + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-  ['mailCta','mailFoot','mailPlain'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(el){ el.setAttribute('href', href); }
-  });
   var plain = document.getElementById('mailPlain');
-  if(plain){ plain.textContent = addr; }
+  if(plain){ plain.setAttribute('href', href); plain.textContent = addr; }
+
+  /* ---- register-interest form ----
+     Posted to Netlify Forms over fetch so the visitor stays on the page and
+     gets an inline confirmation instead of Netlify's redirect. Netlify picks
+     the form up from the static markup at deploy time (data-netlify + the
+     hidden form-name input), so no backend is involved. */
+  var regForm = document.getElementById('regForm');
+  var formMsg = document.getElementById('formMsg');
+  if(regForm && formMsg){
+    regForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!regForm.reportValidity()){ return; }
+      var btn = document.getElementById('regSubmit');
+      if(btn){ btn.disabled = true; }
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(regForm)).toString()
+      }).then(function(res){
+        if(!res.ok){ throw new Error('HTTP ' + res.status); }
+        regForm.hidden = true;
+        formMsg.className = 'form-msg';
+        formMsg.textContent = "Thanks — we'll be in touch shortly.";
+        formMsg.hidden = false;
+        formMsg.setAttribute('tabindex','-1');
+        formMsg.focus();
+      })['catch'](function(){
+        if(btn){ btn.disabled = false; }
+        formMsg.className = 'form-msg form-msg--err';
+        formMsg.innerHTML = 'That didn’t send. Please email <a href="' + href + '">' + addr +
+          '</a> and we’ll pick it up from there.';
+        formMsg.hidden = false;
+      });
+    });
+  }
 
   document.getElementById('yr').textContent = new Date().getFullYear();
 
