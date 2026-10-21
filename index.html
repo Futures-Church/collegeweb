@@ -3,9 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diploma of Church Planting Leadership — Futures Church</title>
+<title>Diploma of Church Planting Leadership — Alphacrucis University College</title>
 <meta name="description" content="An accredited, practitioner-led pathway that seeds a pioneering culture across your whole church. One year. Eight subjects. Four pillars. Delivered by Alphacrucis University College.">
 <meta name="theme-color" content="#5d1fec">
+<link rel="icon" href="data:,">
+
+<link rel="preload" as="image" type="image/avif" fetchpriority="high"
+      imagesrcset="assets/photos/hero-bg-800.avif 800w, assets/photos/hero-bg-1280.avif 1280w, assets/photos/hero-bg-1920.avif 1920w, assets/photos/hero-bg-2400.avif 2400w"
+      imagesizes="100vw">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/GalGothic-Regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/GalGothic-Light.woff2" crossorigin>
 
 <meta property="og:title" content="Diploma of Church Planting Leadership">
 <meta property="og:description" content="The next planters are already in your church. This gives them a pathway.">
@@ -23,30 +30,35 @@
 @font-face{
   font-family:'Rhymes Display';
   src:local('Rhymes Display Light'),local('Rhymes Text Light'),
+      url('assets/fonts/Rhymes-Display-Light.woff2') format('woff2'),
       url('assets/fonts/Rhymes Display Light.ttf') format('truetype');
   font-weight:300;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Rhymes Display';
   src:local('Rhymes Display Light Italic'),local('Rhymes Text Light Italic'),
+      url('assets/fonts/Rhymes-Display-Light-Italic.woff2') format('woff2'),
       url('assets/fonts/Rhymes Display Light Italic.ttf') format('truetype');
   font-weight:300;font-style:italic;font-display:swap;
 }
 @font-face{
   font-family:'Gal Gothic';
   src:local('Gal Gothic Regular'),local('GalGothic-Regular'),
+      url('assets/fonts/GalGothic-Regular.woff2') format('woff2'),
       url('assets/fonts/GalGothic-Regular.otf') format('opentype');
   font-weight:400;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Gal Gothic';
   src:local('Gal Gothic Light'),local('GalGothic-Light'),
+      url('assets/fonts/GalGothic-Light.woff2') format('woff2'),
       url('assets/fonts/GalGothic-Light.otf') format('opentype');
   font-weight:300;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Gal Gothic';
   src:local('Gal Gothic Italic'),local('GalGothic-Italic'),
+      url('assets/fonts/GalGothic-Italic.woff2') format('woff2'),
       url('assets/fonts/GalGothic-Italic.otf') format('opentype');
   font-weight:400;font-style:italic;font-display:swap;
 }
@@ -78,6 +90,8 @@
   --font-body:'Gal Gothic',Arial,Helvetica,'Helvetica Neue',sans-serif;
 
   --pad:clamp(1.25rem,5vw,6rem);
+  --nav-h:3.9rem;                       /* sticky header height (stuck state) */
+  --sec-pad:clamp(4.5rem,11svh,9rem);   /* section top/bottom padding, shared with scroll-margin */
   --maxw:1240px;
   --ease:cubic-bezier(.16,1,.3,1);
 }
@@ -94,8 +108,12 @@ body{
   overflow-x:clip;
 }
 img{max-width:100%;display:block}
+picture{display:contents}
 a{color:inherit}
 ::selection{background:var(--lemon);color:var(--ink)}
+:focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px var(--violet);border-radius:6px}
+.btn:focus-visible{border-radius:999px}
+.field input:focus-visible{box-shadow:none;border-radius:10px}
 
 /* ===================== TYPE ===================== */
 .h-mega,.h1,.h2,.h3{
@@ -103,14 +121,14 @@ a{color:inherit}
   text-transform:uppercase;letter-spacing:-.018em;line-height:.92;margin:0;
 }
 .h-mega{font-size:clamp(2.3rem,5.4vw,4.9rem)}
-.h1{font-size:clamp(2.2rem,6.4vw,5rem)}
+.h1{font-size:clamp(2.2rem,min(6.4vw,9.5svh),5rem)}
 .h2{font-size:clamp(1.85rem,4.6vw,3.6rem);line-height:.95}
 .h3{font-size:clamp(1.15rem,1.6vw,1.5rem);letter-spacing:.005em;line-height:1.1}
 .serif{font-family:var(--font-display);font-weight:300;text-transform:none;letter-spacing:0}
 .serif em{font-style:italic}
 
 .eyebrow{
-  font-family:var(--font-body);font-size:.7rem;font-weight:400;
+  font-family:var(--font-body);font-size:.75rem;font-weight:400;
   letter-spacing:.22em;text-transform:uppercase;color:var(--orange);
   display:flex;align-items:center;gap:.75rem;margin:0 0 1.5rem;
 }
@@ -137,7 +155,7 @@ p:last-child{margin-bottom:0}
   -webkit-backdrop-filter:blur(18px) saturate(1.4);
   border-bottom-color:rgba(255,255,255,.12);padding-top:.6rem;padding-bottom:.6rem;
 }
-.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;flex:0 0 auto}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;flex:0 0 auto;padding:11px 0;margin:-11px 0}
 .brand img{height:22px;width:auto}
 /* The Alphacrucis lockup ships in navy for light backgrounds, which is
    invisible on the violet hero. Reversing it to white is the standard
@@ -150,12 +168,54 @@ p:last-child{margin-bottom:0}
   letter-spacing:.16em;font-size:.9rem;line-height:1;
 }
 .brand .wordmark small{display:block;font-size:.5rem;letter-spacing:.3em;opacity:.7;margin-top:.3rem}
-.nav-links{display:none;gap:1.6rem;margin-left:auto;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72)}
-.nav-links a{text-decoration:none;position:relative;padding:.25rem 0;transition:color .3s}
-.nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--lemon);transition:width .35s var(--ease)}
+/* Nav links: a dropdown panel below 1000px, an inline row above it */
+.nav-links{
+  display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+  padding:.35rem var(--pad) 1.1rem;background:var(--violet-night);
+  border-bottom:1px solid rgba(255,255,255,.14);
+  font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.86);
+}
+.nav.menu-open .nav-links{display:flex;animation:menuIn .28s var(--ease)}
+@keyframes menuIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.nav-links a{
+  display:flex;align-items:center;min-height:48px;text-decoration:none;position:relative;
+  border-top:1px solid rgba(255,255,255,.1);transition:color .3s;
+}
+.nav-links a:first-child{border-top:0}
 .nav-links a:hover{color:#fff}
-.nav-links a:hover::after{width:100%}
-@media(min-width:1000px){.nav-links{display:flex}.nav .brand img{height:32px}}
+.nav-links .nav-menu-cta{color:var(--lemon);font-weight:400}
+.nav.menu-open{background:var(--violet-night)}
+
+/* hamburger — 44x44 hit area, three bars that morph into a cross */
+.nav-toggle{
+  order:3;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  width:44px;height:44px;margin:0 -.5rem 0 0;padding:0;border:0;border-radius:10px;
+  background:transparent;color:#fff;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.nav-toggle .bars,.nav-toggle .bars::before,.nav-toggle .bars::after{
+  display:block;width:22px;height:2px;border-radius:2px;background:currentColor;
+  transition:transform .3s var(--ease),background .2s;
+}
+.nav-toggle .bars{position:relative}
+.nav-toggle .bars::before,.nav-toggle .bars::after{content:'';position:absolute;left:0}
+.nav-toggle .bars::before{top:-7px}
+.nav-toggle .bars::after{top:7px}
+.nav-toggle[aria-expanded="true"] .bars{background:transparent}
+.nav-toggle[aria-expanded="true"] .bars::before{transform:translateY(7px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] .bars::after{transform:translateY(-7px) rotate(-45deg)}
+
+@media(min-width:1000px){
+  .nav-toggle{display:none}
+  .nav-links{
+    display:flex;position:static;flex-direction:row;gap:1.6rem;margin-left:auto;padding:0;
+    background:none;border:0;font-size:.72rem;color:rgba(255,255,255,.72);
+  }
+  .nav-links a{min-height:44px;padding:0;border-top:0}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:.7rem;height:1px;width:0;background:var(--lemon);transition:width .35s var(--ease)}
+  .nav-links a:hover::after{width:100%}
+  .nav-links .nav-menu-cta{display:none}
+  .nav .brand img{height:32px}
+}
 
 /* ===================== BUTTONS ===================== */
 .btn{
@@ -163,7 +223,7 @@ p:last-child{margin-bottom:0}
   display:inline-flex;align-items:center;gap:.7rem;
   font-family:var(--font-body);font-size:.78rem;font-weight:400;
   letter-spacing:.15em;text-transform:uppercase;text-decoration:none;
-  padding:1.05em 1.6em;border:0;border-radius:999px;cursor:pointer;
+  padding:1.05em 1.6em;min-height:44px;border:0;border-radius:999px;cursor:pointer;
   background:var(--bg);color:var(--fg);position:relative;overflow:hidden;
   transition:transform .45s var(--ease),box-shadow .45s var(--ease);
   box-shadow:0 0 0 rgba(0,0,0,0);
@@ -181,14 +241,16 @@ p:last-child{margin-bottom:0}
 .btn--ghost{--bg:transparent;--fg:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
 .btn--ghost::before{background:#fff}
 .btn--ghost:hover{color:var(--violet-deep)}
-.btn--nav{padding:.75em 1.15em;font-size:.68rem;margin-left:auto;flex:0 0 auto}
+.btn--nav{order:2;padding:.75em 1.15em;font-size:.68rem;margin-left:auto;flex:0 0 auto;min-height:44px}
 @media(min-width:1000px){.btn--nav{margin-left:1.8rem}}
+@media(max-width:419px){.btn--nav{display:none}.nav-toggle{margin-left:auto}.nav .brand img{height:22px}}
+@media(min-width:420px){.nav-links .nav-menu-cta{display:none}}
 
 /* ===================== HERO ===================== */
 .hero{
-  position:relative;min-height:100svh;display:flex;flex-direction:column;
-  justify-content:space-between;gap:clamp(2rem,6vh,4rem);
-  padding:clamp(5.5rem,13vh,8rem) var(--pad) clamp(3rem,7vh,4.5rem);
+  position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
+  justify-content:space-between;gap:clamp(2rem,6svh,4rem);
+  padding:clamp(5.5rem,13svh,8rem) var(--pad) clamp(3rem,7svh,4.5rem);
   color:#fff;overflow:hidden;isolation:isolate;
 }
 .hero-bg{position:absolute;inset:0;z-index:-3;background:var(--violet-night);overflow:hidden}
@@ -279,7 +341,7 @@ p:last-child{margin-bottom:0}
 @media(max-width:640px){.hero-meta{border-left:0;padding-left:0}}
 
 .scroll-cue{
-  position:absolute;bottom:clamp(1.1rem,3vh,2rem);right:var(--pad);
+  position:absolute;bottom:clamp(1.1rem,3svh,2rem);right:var(--pad);
   display:flex;align-items:center;gap:.6rem;
   font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;
   color:rgba(255,255,255,.5);opacity:0;animation:fade 1s 1.3s forwards;
@@ -290,7 +352,11 @@ p:last-child{margin-bottom:0}
 @media(max-width:760px){.scroll-cue{display:none}}
 
 /* ===================== SECTION SHELL ===================== */
-.sec{position:relative;padding:clamp(4.5rem,11vh,9rem) var(--pad)}
+.sec{position:relative;padding:var(--sec-pad) var(--pad)}
+/* Anchor jumps: keep the label + headline clear of the sticky header. Only adds
+   margin where the section's own top padding is smaller than the header. */
+section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 2rem - var(--sec-pad)))}
+#top{scroll-margin-top:0}
 .sec--paper{background:var(--paper);color:var(--ink)}
 .sec--warm{background:var(--paper-warm);color:var(--ink)}
 .sec--violet{background:var(--violet-deep);color:#fff}
@@ -298,7 +364,7 @@ p:last-child{margin-bottom:0}
 .wrap{max-width:var(--maxw);margin-inline:auto;width:100%}
 .grid2{display:grid;gap:clamp(2rem,4vw,4.5rem)}
 @media(min-width:900px){.grid2{grid-template-columns:1fr 1fr;align-items:start}}
-.grid2--sticky > :first-child{position:sticky;top:clamp(6rem,14vh,9rem)}
+.grid2--sticky > :first-child{position:sticky;top:clamp(6rem,14svh,9rem)}
 @media(max-width:899px){.grid2--sticky > :first-child{position:static}}
 
 /* reveals */
@@ -342,29 +408,15 @@ p:last-child{margin-bottom:0}
   font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--violet-deep);
 }
 
-/* ===================== TIMELINE ===================== */
-.tl{margin:2.5rem 0 0;position:relative;list-style:none;padding:0}
-.tl::before{
-  content:'';position:absolute;left:0;top:.4rem;bottom:.4rem;width:1px;
-  background:var(--line);
-}
-.tl li{position:relative;padding:0 0 2.1rem 2rem}
-.tl li:last-child{padding-bottom:0}
-.tl li::before{
-  content:'';position:absolute;left:-4px;top:.45rem;width:9px;height:9px;border-radius:50%;
-  background:var(--orange);box-shadow:0 0 0 5px var(--paper);
-}
-.sec--warm .tl li::before{box-shadow:0 0 0 5px var(--paper-warm)}
-.tl .yr{
-  display:block;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--copper);margin-bottom:.35rem;
-}
-.tl .tx{display:block;max-width:46ch}
-.tl b{font-weight:400;color:var(--violet)}
-
 /* ===================== PILLARS ===================== */
 .pillars{display:grid;gap:1rem;margin:2.6rem 0 0}
 @media(min-width:640px){.pillars{grid-template-columns:1fr 1fr}}
+@media(min-width:1180px){
+  .pillars{grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:2rem}
+  .pillar{padding:1.3rem 1.15rem 1.1rem}
+  .pillar .n{font-size:1.9rem;margin-bottom:.35rem}
+  .pillar h3{min-height:2.35em}
+}
 .pillar{
   position:relative;background:#fff;border-radius:14px;padding:1.6rem 1.5rem 1.5rem;
   box-shadow:0 1px 0 var(--line),0 22px 44px -36px rgba(20,16,31,.42);
@@ -380,11 +432,6 @@ p:last-child{margin-bottom:0}
   display:block;margin-bottom:.5rem;
 }
 .pillar h3{margin:0 0 .2rem}
-.pillar .sub{
-  display:block;font-family:var(--font-display);font-style:italic;font-weight:300;
-  font-size:.95rem;color:var(--copper);margin-bottom:.7rem;
-}
-.pillar p{font-size:.92rem;line-height:1.5;color:var(--ink-soft);margin:0}
 /* Eight subjects, two per pillar, each expandable via native <details>.
    Child combinators throughout are deliberate: the Elective's nested option
    list must not inherit the row border or the uppercase label styling. */
@@ -429,7 +476,7 @@ p:last-child{margin-bottom:0}
   padding:1.05rem 0;border-bottom:1px solid var(--line);
 }
 @media(min-width:600px){.fact{grid-template-columns:11rem 1fr;gap:1.5rem;align-items:baseline}}
-.fact dt{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
+.fact dt{font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet)}
 .fact dd{margin:0;font-size:1.02rem}
 .fact dd b{font-weight:400;color:var(--copper)}
 .tag{
@@ -453,14 +500,7 @@ p:last-child{margin-bottom:0}
 .shot--tall{aspect-ratio:4/5}
 .shot--portrait{aspect-ratio:3/4}
 .shot--wide{aspect-ratio:3/2}
-.shot--pin{object-position:center 30%}
 .sec--violet .shot,.sec--night .shot{box-shadow:0 28px 62px -34px rgba(0,0,0,.7)}
-/* caption sits over the base of the image */
-.shot figcaption{
-  position:absolute;left:0;right:0;bottom:0;padding:2.6rem 1.2rem .95rem;
-  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;
-  background:linear-gradient(transparent,rgba(24,7,66,.82));
-}
 @media(prefers-reduced-motion:reduce){
   .shot img,.shot.in img,.shot:hover img{transform:none}
 }
@@ -471,9 +511,6 @@ p:last-child{margin-bottom:0}
 }
 .callout h3{color:var(--lemon);margin-bottom:.6rem}
 .callout p{font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.85);margin:0;max-width:56ch}
-.callout--sky{background:var(--sky);color:var(--ink)}
-.callout--sky h3{color:var(--violet-deep)}
-.callout--sky p{color:rgba(20,16,31,.78)}
 .callout--bar{border-left:6px solid var(--lemon)}
 
 /* ===================== NUMBERED LIST ===================== */
@@ -521,7 +558,7 @@ p:last-child{margin-bottom:0}
 
 /* ===================== MARQUEE ===================== */
 .marquee{
-  padding:clamp(2.5rem,6vh,4.5rem) 0;background:var(--lemon);color:var(--ink);
+  padding:clamp(2.5rem,6svh,4.5rem) 0;background:var(--lemon);color:var(--ink);
   overflow:hidden;position:relative;
 }
 .marquee-track{display:flex;width:max-content;animation:slide 34s linear infinite}
@@ -543,17 +580,16 @@ p:last-child{margin-bottom:0}
 .cta-inner{max-width:var(--maxw);margin-inline:auto;position:relative;z-index:1}
 .cta .h1{max-width:22ch}
 .cta-sub{margin:1.6rem 0 2.4rem;max-width:48ch;font-size:clamp(1rem,.6vw + .9rem,1.2rem);color:rgba(255,255,255,.82)}
-.cta-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
 /* ---- register-interest form (Netlify Forms) ---- */
 .reg-form{margin-top:2.1rem;max-width:34rem}
 .reg-form .fields{display:grid;gap:1rem}
 @media(min-width:560px){.reg-form .fields{grid-template-columns:1fr 1fr}}
 .field label{
-  display:block;margin-bottom:.42rem;font-size:.68rem;letter-spacing:.14em;
-  text-transform:uppercase;color:rgba(255,255,255,.62);
+  display:block;margin-bottom:.42rem;font-size:.75rem;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(255,255,255,.72);
 }
 .field input{
-  width:100%;padding:.78rem .9rem;border-radius:10px;font:inherit;font-size:.95rem;
+  width:100%;min-height:48px;padding:.78rem .9rem;border-radius:10px;font:inherit;font-size:max(16px,1rem);
   color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);
   transition:border-color .25s var(--ease),background .25s var(--ease);
 }
@@ -587,25 +623,27 @@ p:last-child{margin-bottom:0}
 .cta-card a.inline:hover{border-color:var(--lemon)}
 
 /* ===================== FOOTER ===================== */
-.foot{background:var(--lemon);color:var(--ink);padding:clamp(3rem,7vh,5rem) var(--pad) 2.5rem}
+.foot{background:var(--lemon);color:var(--ink);padding:clamp(3rem,7svh,5rem) var(--pad) 2.5rem}
 .foot-top{
   display:grid;gap:2rem;padding-bottom:2.2rem;border-bottom:1px solid rgba(20,16,31,.18);
 }
 @media(min-width:820px){.foot-top{grid-template-columns:1.1fr 1fr;align-items:start}}
 .foot .brand{color:var(--ink)}
 .foot-link{
-  display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
-  font-size:.95rem;color:var(--violet-deep);border-bottom:1px solid rgba(43,13,118,.3);
-  padding-bottom:2px;transition:border-color .3s,gap .3s var(--ease);
+  display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;min-height:44px;
+  font-size:.95rem;color:var(--violet-deep);
+  background:linear-gradient(rgba(43,13,118,.3),rgba(43,13,118,.3)) 0 calc(100% - 9px)/100% 1px no-repeat;
+  transition:background-color .3s,gap .3s var(--ease);
 }
-.foot-link:hover{border-color:var(--violet-deep);gap:.75rem}
-.foot-links{display:grid;gap:.85rem;justify-items:start}
+.foot-link:hover{background-image:linear-gradient(var(--violet-deep),var(--violet-deep));gap:.75rem}
+.foot-links{display:grid;gap:.15rem;justify-items:start}
+.foot .brand{padding:7px 0;margin:-7px 0 calc(1.4rem - 7px)}
 .fineprint{
-  margin-top:2rem;font-size:.78rem;line-height:1.62;color:rgba(20,16,31,.78);max-width:80ch;
+  margin-top:2rem;font-size:.78rem;line-height:1.62;color:rgba(20,16,31,.78);max-width:64ch;
 }
 .foot-base{
   margin-top:1.6rem;display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;
-  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,16,31,.68);
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(20,16,31,.7);
 }
 
 /* ===================== MOTION PREFS ===================== */
@@ -615,6 +653,10 @@ p:last-child{margin-bottom:0}
   [data-rv]{opacity:1!important;transform:none!important}
   .hero-h .line > span{transform:none;opacity:1}
   .hero-foot,.scroll-cue{opacity:1}
+  .marquee-track{width:auto;flex-wrap:wrap;justify-content:center;padding:0 var(--pad);transform:none!important}
+  .marquee-track span{white-space:normal;text-align:center;padding-right:0}
+  .marquee-track span:nth-child(2){display:none}
+  .marquee-track span i{display:none}
 }
 </style>
 </head>
@@ -625,15 +667,19 @@ p:last-child{margin-bottom:0}
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
   <a class="brand" href="#top">
-    <img src="assets/alphacrucis-logo.png" alt="Alphacrucis University College"
+    <img src="assets/alphacrucis-logo-640.png" alt="Alphacrucis University College" width="640" height="120" fetchpriority="high"
          onerror="this.remove();document.getElementById('wm').hidden=false">
     <span class="wordmark" id="wm" hidden>Alphacrucis<small>University College</small></span>
   </a>
-  <nav class="nav-links">
+  <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Menu">
+    <span class="bars" aria-hidden="true"></span>
+  </button>
+  <nav class="nav-links" id="navMenu" aria-label="Primary">
     <a href="#moment">The moment</a>
     <a href="#course">The course</a>
     <a href="#church">Your church</a>
     <a href="#pathway">The pathway</a>
+    <a class="nav-menu-cta" href="#register">Register interest</a>
   </nav>
   <a class="btn btn--nav" href="#register"><span>Register interest</span></a>
 </header>
@@ -641,8 +687,12 @@ p:last-child{margin-bottom:0}
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <img src="assets/photos/hero-bg.jpg" alt="" width="2400" height="1600"
-         fetchpriority="high" decoding="async">
+    <picture>
+          <source type="image/avif" srcset="assets/photos/hero-bg-800.avif 800w, assets/photos/hero-bg-1280.avif 1280w, assets/photos/hero-bg-1920.avif 1920w, assets/photos/hero-bg-2400.avif 2400w" sizes="100vw">
+          <source type="image/webp" srcset="assets/photos/hero-bg-800.webp 800w, assets/photos/hero-bg-1280.webp 1280w, assets/photos/hero-bg-1920.webp 1920w, assets/photos/hero-bg-2400.webp 2400w" sizes="100vw">
+          <img src="assets/photos/hero-bg-1280.jpg" alt=""
+               width="2400" height="1600" decoding="async" fetchpriority="high">
+        </picture>
   </div>
   <div class="hero-scrim"></div>
   <div class="rays"></div>
@@ -700,8 +750,12 @@ p:last-child{margin-bottom:0}
         </div>
       </div>
       <figure class="shot shot--wide" data-rv data-d="4" style="margin-top:1rem">
-        <img src="assets/photos/moment.jpg" alt="A student reading in the college common room"
-             width="1200" height="1800" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/avif" srcset="assets/photos/moment-480.avif 480w, assets/photos/moment-800.avif 800w, assets/photos/moment-1200.avif 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <source type="image/webp" srcset="assets/photos/moment-480.webp 480w, assets/photos/moment-800.webp 800w, assets/photos/moment-1200.webp 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <img src="assets/photos/moment.jpg" alt="A student reading in the college common room"
+               width="1200" height="1800" loading="lazy" decoding="async">
+        </picture>
       </figure>
     </div>
     <div class="measure">
@@ -722,8 +776,12 @@ p:last-child{margin-bottom:0}
       <p class="eyebrow" data-rv>Section 02 — The gap</p>
       <h2 class="h1" data-rv data-d="1">What the movement has been missing.</h2>
       <figure class="shot shot--tall" data-rv data-d="2">
-        <img src="assets/photos/gap.jpg" alt="A student reading alone in the college common room"
-             width="1200" height="1800" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/avif" srcset="assets/photos/gap-480.avif 480w, assets/photos/gap-800.avif 800w, assets/photos/gap-1200.avif 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <source type="image/webp" srcset="assets/photos/gap-480.webp 480w, assets/photos/gap-800.webp 800w, assets/photos/gap-1200.webp 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <img src="assets/photos/gap.jpg" alt="A student reading alone in the college common room"
+               width="1200" height="1800" loading="lazy" decoding="async">
+        </picture>
       </figure>
     </div>
     <div class="measure">
@@ -826,8 +884,12 @@ p:last-child{margin-bottom:0}
       <p class="eyebrow" data-rv style="color:var(--lemon)">Section 04 — Culture change</p>
       <h2 class="h1" data-rv data-d="1">Not just what it does to a student. What it does to <span class="hl serif" style="text-transform:none"><em>a church.</em></span></h2>
       <figure class="shot shot--wide" data-rv data-d="2">
-        <img src="assets/photos/culture.jpg" alt="A full room of students listening to a speaker at the front"
-             width="1440" height="1800" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/avif" srcset="assets/photos/culture-480.avif 480w, assets/photos/culture-800.avif 800w, assets/photos/culture-1200.avif 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <source type="image/webp" srcset="assets/photos/culture-480.webp 480w, assets/photos/culture-800.webp 800w, assets/photos/culture-1200.webp 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <img src="assets/photos/culture.jpg" alt="A full room of students listening to a speaker at the front"
+               width="1440" height="1800" loading="lazy" decoding="async">
+        </picture>
       </figure>
       <p data-rv data-d="3" style="margin-top:1.6rem;max-width:44ch;color:rgba(255,255,255,.82)">A church that hosts the Diploma does not simply graduate one or two trained planters. Something happens to the whole community. Multiplication conversations appear across the church. The language of pioneering shows up organically in different places. Volunteers who have never considered planting begin asking questions they hadn't known to ask.</p>
     </div>
@@ -860,8 +922,12 @@ p:last-child{margin-bottom:0}
     </div>
     <div class="measure">
       <figure class="shot shot--wide" data-rv data-d="2" style="margin-top:0">
-        <img src="assets/photos/lcc.jpg" alt="A student studying at a Local Church College session"
-             width="1200" height="1800" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/avif" srcset="assets/photos/lcc-480.avif 480w, assets/photos/lcc-800.avif 800w, assets/photos/lcc-1200.avif 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <source type="image/webp" srcset="assets/photos/lcc-480.webp 480w, assets/photos/lcc-800.webp 800w, assets/photos/lcc-1200.webp 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <img src="assets/photos/lcc.jpg" alt="A student studying at a Local Church College session"
+               width="1200" height="1800" loading="lazy" decoding="async">
+        </picture>
       </figure>
       <p data-rv data-d="3" style="margin-top:1.6rem">The Diploma of Church Planting Leadership is delivered through Alphacrucis University College's <b style="font-weight:400;color:var(--violet)">Local Church College</b> framework — the same model already powering diplomas in ministry, leadership, and business across the ACC.</p>
       <p data-rv data-d="4">A hosting church provides space and a local LCC coordinator. Alphacrucis handles accreditation, enrolment, and academic oversight — exactly as it does for every other LCC award.</p>
@@ -948,8 +1014,12 @@ p:last-child{margin-bottom:0}
     <p class="form-msg" id="formMsg" role="status" aria-live="polite" hidden></p>
     </div>
     <figure class="shot shot--portrait" data-rv data-d="3">
-      <img src="assets/photos/invite.jpg" alt="A student in conversation at Futures College"
-           width="1200" height="1800" loading="lazy" decoding="async">
+      <picture>
+          <source type="image/avif" srcset="assets/photos/invite-400.avif 400w, assets/photos/invite-800.avif 800w" sizes="(min-width:900px) min(34vw,420px), min(90vw,352px)">
+          <source type="image/webp" srcset="assets/photos/invite-400.webp 400w, assets/photos/invite-800.webp 800w" sizes="(min-width:900px) min(34vw,420px), min(90vw,352px)">
+          <img src="assets/photos/invite.jpg" alt="A student in conversation at Futures College"
+               width="1200" height="1800" loading="lazy" decoding="async">
+        </picture>
     </figure>
    </div>
 
@@ -972,7 +1042,7 @@ p:last-child{margin-bottom:0}
   <div class="foot-top">
     <div>
       <a class="brand" href="#top" style="margin-bottom:1.4rem;display:inline-flex">
-        <img src="assets/futures-logo.png" alt="Futures Church" style="height:30px"
+        <img src="assets/futures-logo-640.png" alt="Futures Church" width="640" height="63" loading="lazy" style="height:30px;width:auto"
              onerror="this.remove();document.getElementById('wm2').hidden=false">
         <span class="wordmark" id="wm2" hidden>Futures<small>Church</small></span>
       </a>
@@ -1063,6 +1133,26 @@ p:last-child{margin-bottom:0}
   }
 
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---- mobile menu: aria-expanded toggle, closes on link tap / Escape /
+     outside tap / growing past the desktop breakpoint ---- */
+  var navEl = document.getElementById('nav'), navBtn = document.getElementById('navToggle');
+  function setMenu(open){
+    navEl.classList.toggle('menu-open', open);
+    navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navBtn.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+  }
+  navBtn.addEventListener('click', function(){ setMenu(navBtn.getAttribute('aria-expanded') !== 'true'); });
+  document.getElementById('navMenu').addEventListener('click', function(e){
+    if(e.target.closest('a')){ setMenu(false); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && navBtn.getAttribute('aria-expanded') === 'true'){ setMenu(false); navBtn.focus(); }
+  });
+  document.addEventListener('click', function(e){
+    if(!navEl.contains(e.target)){ setMenu(false); }
+  });
+  window.matchMedia('(min-width:1000px)').addEventListener('change', function(m){ if(m.matches){ setMenu(false); } });
 
   /* ---- scroll-reveal targets ----
      Rect-based rather than IntersectionObserver-only: a body-level scroll
