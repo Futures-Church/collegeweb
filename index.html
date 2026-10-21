@@ -6,6 +6,13 @@
 <title>Diploma of Church Planting Leadership — Alphacrucis University College</title>
 <meta name="description" content="An accredited, practitioner-led pathway that seeds a pioneering culture across your whole church. One year. Eight subjects. Four pillars. Delivered by Alphacrucis University College.">
 <meta name="theme-color" content="#5d1fec">
+<link rel="icon" href="data:,">
+
+<link rel="preload" as="image" type="image/avif" fetchpriority="high"
+      imagesrcset="assets/photos/hero-bg-800.avif 800w, assets/photos/hero-bg-1280.avif 1280w, assets/photos/hero-bg-1920.avif 1920w, assets/photos/hero-bg-2400.avif 2400w"
+      imagesizes="100vw">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/GalGothic-Regular.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/GalGothic-Light.woff2" crossorigin>
 
 <meta property="og:title" content="Diploma of Church Planting Leadership">
 <meta property="og:description" content="The next planters are already in your church. This gives them a pathway.">
@@ -23,30 +30,35 @@
 @font-face{
   font-family:'Rhymes Display';
   src:local('Rhymes Display Light'),local('Rhymes Text Light'),
+      url('assets/fonts/Rhymes-Display-Light.woff2') format('woff2'),
       url('assets/fonts/Rhymes Display Light.ttf') format('truetype');
   font-weight:300;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Rhymes Display';
   src:local('Rhymes Display Light Italic'),local('Rhymes Text Light Italic'),
+      url('assets/fonts/Rhymes-Display-Light-Italic.woff2') format('woff2'),
       url('assets/fonts/Rhymes Display Light Italic.ttf') format('truetype');
   font-weight:300;font-style:italic;font-display:swap;
 }
 @font-face{
   font-family:'Gal Gothic';
   src:local('Gal Gothic Regular'),local('GalGothic-Regular'),
+      url('assets/fonts/GalGothic-Regular.woff2') format('woff2'),
       url('assets/fonts/GalGothic-Regular.otf') format('opentype');
   font-weight:400;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Gal Gothic';
   src:local('Gal Gothic Light'),local('GalGothic-Light'),
+      url('assets/fonts/GalGothic-Light.woff2') format('woff2'),
       url('assets/fonts/GalGothic-Light.otf') format('opentype');
   font-weight:300;font-style:normal;font-display:swap;
 }
 @font-face{
   font-family:'Gal Gothic';
   src:local('Gal Gothic Italic'),local('GalGothic-Italic'),
+      url('assets/fonts/GalGothic-Italic.woff2') format('woff2'),
       url('assets/fonts/GalGothic-Italic.otf') format('opentype');
   font-weight:400;font-style:italic;font-display:swap;
 }
@@ -96,6 +108,7 @@ body{
   overflow-x:clip;
 }
 img{max-width:100%;display:block}
+picture{display:contents}
 a{color:inherit}
 ::selection{background:var(--lemon);color:var(--ink)}
 :focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px var(--violet);border-radius:6px}
@@ -108,7 +121,7 @@ a{color:inherit}
   text-transform:uppercase;letter-spacing:-.018em;line-height:.92;margin:0;
 }
 .h-mega{font-size:clamp(2.3rem,5.4vw,4.9rem)}
-.h1{font-size:clamp(2.2rem,6.4vw,5rem)}
+.h1{font-size:clamp(2.2rem,min(6.4vw,9.5svh),5rem)}
 .h2{font-size:clamp(1.85rem,4.6vw,3.6rem);line-height:.95}
 .h3{font-size:clamp(1.15rem,1.6vw,1.5rem);letter-spacing:.005em;line-height:1.1}
 .serif{font-family:var(--font-display);font-weight:300;text-transform:none;letter-spacing:0}
@@ -142,7 +155,7 @@ p:last-child{margin-bottom:0}
   -webkit-backdrop-filter:blur(18px) saturate(1.4);
   border-bottom-color:rgba(255,255,255,.12);padding-top:.6rem;padding-bottom:.6rem;
 }
-.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;flex:0 0 auto;padding:9px 0;margin:-9px 0}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:#fff;flex:0 0 auto;padding:11px 0;margin:-11px 0}
 .brand img{height:22px;width:auto}
 /* The Alphacrucis lockup ships in navy for light backgrounds, which is
    invisible on the violet hero. Reversing it to white is the standard
@@ -158,7 +171,7 @@ p:last-child{margin-bottom:0}
 /* Nav links: a dropdown panel below 1000px, an inline row above it */
 .nav-links{
   display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
-  padding:.35rem var(--pad) 1.1rem;background:rgba(24,7,66,.98);
+  padding:.35rem var(--pad) 1.1rem;background:var(--violet-night);
   border-bottom:1px solid rgba(255,255,255,.14);
   font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.86);
 }
@@ -171,7 +184,7 @@ p:last-child{margin-bottom:0}
 .nav-links a:first-child{border-top:0}
 .nav-links a:hover{color:#fff}
 .nav-links .nav-menu-cta{color:var(--lemon);font-weight:400}
-.nav.menu-open{background:rgba(24,7,66,.98)}
+.nav.menu-open{background:var(--violet-night)}
 
 /* hamburger — 44x44 hit area, three bars that morph into a cross */
 .nav-toggle{
@@ -197,8 +210,8 @@ p:last-child{margin-bottom:0}
     display:flex;position:static;flex-direction:row;gap:1.6rem;margin-left:auto;padding:0;
     background:none;border:0;font-size:.72rem;color:rgba(255,255,255,.72);
   }
-  .nav-links a{min-height:0;padding:.6rem 0;border-top:0}
-  .nav-links a::after{content:'';position:absolute;left:0;bottom:.35rem;height:1px;width:0;background:var(--lemon);transition:width .35s var(--ease)}
+  .nav-links a{min-height:44px;padding:0;border-top:0}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:.7rem;height:1px;width:0;background:var(--lemon);transition:width .35s var(--ease)}
   .nav-links a:hover::after{width:100%}
   .nav-links .nav-menu-cta{display:none}
   .nav .brand img{height:32px}
@@ -342,7 +355,7 @@ p:last-child{margin-bottom:0}
 .sec{position:relative;padding:var(--sec-pad) var(--pad)}
 /* Anchor jumps: keep the label + headline clear of the sticky header. Only adds
    margin where the section's own top padding is smaller than the header. */
-section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pad)))}
+section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 2rem - var(--sec-pad)))}
 #top{scroll-margin-top:0}
 .sec--paper{background:var(--paper);color:var(--ink)}
 .sec--warm{background:var(--paper-warm);color:var(--ink)}
@@ -395,29 +408,15 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
   font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--violet-deep);
 }
 
-/* ===================== TIMELINE ===================== */
-.tl{margin:2.5rem 0 0;position:relative;list-style:none;padding:0}
-.tl::before{
-  content:'';position:absolute;left:0;top:.4rem;bottom:.4rem;width:1px;
-  background:var(--line);
-}
-.tl li{position:relative;padding:0 0 2.1rem 2rem}
-.tl li:last-child{padding-bottom:0}
-.tl li::before{
-  content:'';position:absolute;left:-4px;top:.45rem;width:9px;height:9px;border-radius:50%;
-  background:var(--orange);box-shadow:0 0 0 5px var(--paper);
-}
-.sec--warm .tl li::before{box-shadow:0 0 0 5px var(--paper-warm)}
-.tl .yr{
-  display:block;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--copper);margin-bottom:.35rem;
-}
-.tl .tx{display:block;max-width:46ch}
-.tl b{font-weight:400;color:var(--violet)}
-
 /* ===================== PILLARS ===================== */
 .pillars{display:grid;gap:1rem;margin:2.6rem 0 0}
 @media(min-width:640px){.pillars{grid-template-columns:1fr 1fr}}
+@media(min-width:1180px){
+  .pillars{grid-template-columns:repeat(4,1fr);gap:.9rem;margin-top:2rem}
+  .pillar{padding:1.3rem 1.15rem 1.1rem}
+  .pillar .n{font-size:1.9rem;margin-bottom:.35rem}
+  .pillar h3{min-height:2.35em}
+}
 .pillar{
   position:relative;background:#fff;border-radius:14px;padding:1.6rem 1.5rem 1.5rem;
   box-shadow:0 1px 0 var(--line),0 22px 44px -36px rgba(20,16,31,.42);
@@ -433,11 +432,6 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
   display:block;margin-bottom:.5rem;
 }
 .pillar h3{margin:0 0 .2rem}
-.pillar .sub{
-  display:block;font-family:var(--font-display);font-style:italic;font-weight:300;
-  font-size:.95rem;color:var(--copper);margin-bottom:.7rem;
-}
-.pillar p{font-size:.92rem;line-height:1.5;color:var(--ink-soft);margin:0}
 /* Eight subjects, two per pillar, each expandable via native <details>.
    Child combinators throughout are deliberate: the Elective's nested option
    list must not inherit the row border or the uppercase label styling. */
@@ -506,14 +500,7 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
 .shot--tall{aspect-ratio:4/5}
 .shot--portrait{aspect-ratio:3/4}
 .shot--wide{aspect-ratio:3/2}
-.shot--pin{object-position:center 30%}
 .sec--violet .shot,.sec--night .shot{box-shadow:0 28px 62px -34px rgba(0,0,0,.7)}
-/* caption sits over the base of the image */
-.shot figcaption{
-  position:absolute;left:0;right:0;bottom:0;padding:2.6rem 1.2rem .95rem;
-  font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;
-  background:linear-gradient(transparent,rgba(24,7,66,.82));
-}
 @media(prefers-reduced-motion:reduce){
   .shot img,.shot.in img,.shot:hover img{transform:none}
 }
@@ -524,9 +511,6 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
 }
 .callout h3{color:var(--lemon);margin-bottom:.6rem}
 .callout p{font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.85);margin:0;max-width:56ch}
-.callout--sky{background:var(--sky);color:var(--ink)}
-.callout--sky h3{color:var(--violet-deep)}
-.callout--sky p{color:rgba(20,16,31,.78)}
 .callout--bar{border-left:6px solid var(--lemon)}
 
 /* ===================== NUMBERED LIST ===================== */
@@ -596,7 +580,6 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
 .cta-inner{max-width:var(--maxw);margin-inline:auto;position:relative;z-index:1}
 .cta .h1{max-width:22ch}
 .cta-sub{margin:1.6rem 0 2.4rem;max-width:48ch;font-size:clamp(1rem,.6vw + .9rem,1.2rem);color:rgba(255,255,255,.82)}
-.cta-actions{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
 /* ---- register-interest form (Netlify Forms) ---- */
 .reg-form{margin-top:2.1rem;max-width:34rem}
 .reg-form .fields{display:grid;gap:1rem}
@@ -684,7 +667,7 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
   <a class="brand" href="#top">
-    <img src="assets/alphacrucis-logo.png" alt="Alphacrucis University College"
+    <img src="assets/alphacrucis-logo-640.png" alt="Alphacrucis University College" width="640" height="120" fetchpriority="high"
          onerror="this.remove();document.getElementById('wm').hidden=false">
     <span class="wordmark" id="wm" hidden>Alphacrucis<small>University College</small></span>
   </a>
@@ -704,8 +687,12 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <img src="assets/photos/hero-bg.jpg" alt="" width="2400" height="1600"
-         fetchpriority="high" decoding="async">
+    <picture>
+          <source type="image/avif" srcset="assets/photos/hero-bg-800.avif 800w, assets/photos/hero-bg-1280.avif 1280w, assets/photos/hero-bg-1920.avif 1920w, assets/photos/hero-bg-2400.avif 2400w" sizes="100vw">
+          <source type="image/webp" srcset="assets/photos/hero-bg-800.webp 800w, assets/photos/hero-bg-1280.webp 1280w, assets/photos/hero-bg-1920.webp 1920w, assets/photos/hero-bg-2400.webp 2400w" sizes="100vw">
+          <img src="assets/photos/hero-bg-1280.jpg" alt=""
+               width="2400" height="1600" decoding="async" fetchpriority="high">
+        </picture>
   </div>
   <div class="hero-scrim"></div>
   <div class="rays"></div>
@@ -763,8 +750,12 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
         </div>
       </div>
       <figure class="shot shot--wide" data-rv data-d="4" style="margin-top:1rem">
-        <img src="assets/photos/moment.jpg" alt="A student reading in the college common room"
-             width="1200" height="1800" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/avif" srcset="assets/photos/moment-480.avif 480w, assets/photos/moment-800.avif 800w, assets/photos/moment-1200.avif 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <source type="image/webp" srcset="assets/photos/moment-480.webp 480w, assets/photos/moment-800.webp 800w, assets/photos/moment-1200.webp 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <img src="assets/photos/moment.jpg" alt="A student reading in the college common room"
+               width="1200" height="1800" loading="lazy" decoding="async">
+        </picture>
       </figure>
     </div>
     <div class="measure">
@@ -785,8 +776,12 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
       <p class="eyebrow" data-rv>Section 02 — The gap</p>
       <h2 class="h1" data-rv data-d="1">What the movement has been missing.</h2>
       <figure class="shot shot--tall" data-rv data-d="2">
-        <img src="assets/photos/gap.jpg" alt="A student reading alone in the college common room"
-             width="1200" height="1800" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/avif" srcset="assets/photos/gap-480.avif 480w, assets/photos/gap-800.avif 800w, assets/photos/gap-1200.avif 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <source type="image/webp" srcset="assets/photos/gap-480.webp 480w, assets/photos/gap-800.webp 800w, assets/photos/gap-1200.webp 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <img src="assets/photos/gap.jpg" alt="A student reading alone in the college common room"
+               width="1200" height="1800" loading="lazy" decoding="async">
+        </picture>
       </figure>
     </div>
     <div class="measure">
@@ -889,8 +884,12 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
       <p class="eyebrow" data-rv style="color:var(--lemon)">Section 04 — Culture change</p>
       <h2 class="h1" data-rv data-d="1">Not just what it does to a student. What it does to <span class="hl serif" style="text-transform:none"><em>a church.</em></span></h2>
       <figure class="shot shot--wide" data-rv data-d="2">
-        <img src="assets/photos/culture.jpg" alt="A full room of students listening to a speaker at the front"
-             width="1440" height="1800" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/avif" srcset="assets/photos/culture-480.avif 480w, assets/photos/culture-800.avif 800w, assets/photos/culture-1200.avif 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <source type="image/webp" srcset="assets/photos/culture-480.webp 480w, assets/photos/culture-800.webp 800w, assets/photos/culture-1200.webp 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <img src="assets/photos/culture.jpg" alt="A full room of students listening to a speaker at the front"
+               width="1440" height="1800" loading="lazy" decoding="async">
+        </picture>
       </figure>
       <p data-rv data-d="3" style="margin-top:1.6rem;max-width:44ch;color:rgba(255,255,255,.82)">A church that hosts the Diploma does not simply graduate one or two trained planters. Something happens to the whole community. Multiplication conversations appear across the church. The language of pioneering shows up organically in different places. Volunteers who have never considered planting begin asking questions they hadn't known to ask.</p>
     </div>
@@ -923,8 +922,12 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
     </div>
     <div class="measure">
       <figure class="shot shot--wide" data-rv data-d="2" style="margin-top:0">
-        <img src="assets/photos/lcc.jpg" alt="A student studying at a Local Church College session"
-             width="1200" height="1800" loading="lazy" decoding="async">
+        <picture>
+          <source type="image/avif" srcset="assets/photos/lcc-480.avif 480w, assets/photos/lcc-800.avif 800w, assets/photos/lcc-1200.avif 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <source type="image/webp" srcset="assets/photos/lcc-480.webp 480w, assets/photos/lcc-800.webp 800w, assets/photos/lcc-1200.webp 1200w" sizes="(min-width:1400px) 590px, (min-width:900px) 44vw, 90vw">
+          <img src="assets/photos/lcc.jpg" alt="A student studying at a Local Church College session"
+               width="1200" height="1800" loading="lazy" decoding="async">
+        </picture>
       </figure>
       <p data-rv data-d="3" style="margin-top:1.6rem">The Diploma of Church Planting Leadership is delivered through Alphacrucis University College's <b style="font-weight:400;color:var(--violet)">Local Church College</b> framework — the same model already powering diplomas in ministry, leadership, and business across the ACC.</p>
       <p data-rv data-d="4">A hosting church provides space and a local LCC coordinator. Alphacrucis handles accreditation, enrolment, and academic oversight — exactly as it does for every other LCC award.</p>
@@ -1011,8 +1014,12 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
     <p class="form-msg" id="formMsg" role="status" aria-live="polite" hidden></p>
     </div>
     <figure class="shot shot--portrait" data-rv data-d="3">
-      <img src="assets/photos/invite.jpg" alt="A student in conversation at Futures College"
-           width="1200" height="1800" loading="lazy" decoding="async">
+      <picture>
+          <source type="image/avif" srcset="assets/photos/invite-400.avif 400w, assets/photos/invite-800.avif 800w" sizes="(min-width:900px) min(34vw,420px), min(90vw,352px)">
+          <source type="image/webp" srcset="assets/photos/invite-400.webp 400w, assets/photos/invite-800.webp 800w" sizes="(min-width:900px) min(34vw,420px), min(90vw,352px)">
+          <img src="assets/photos/invite.jpg" alt="A student in conversation at Futures College"
+               width="1200" height="1800" loading="lazy" decoding="async">
+        </picture>
     </figure>
    </div>
 
@@ -1035,7 +1042,7 @@ section[id]{scroll-margin-top:max(0px,calc(var(--nav-h) + 1.25rem - var(--sec-pa
   <div class="foot-top">
     <div>
       <a class="brand" href="#top" style="margin-bottom:1.4rem;display:inline-flex">
-        <img src="assets/futures-logo.png" alt="Futures Church" style="height:30px"
+        <img src="assets/futures-logo-640.png" alt="Futures Church" width="640" height="63" loading="lazy" style="height:30px;width:auto"
              onerror="this.remove();document.getElementById('wm2').hidden=false">
         <span class="wordmark" id="wm2" hidden>Futures<small>Church</small></span>
       </a>
